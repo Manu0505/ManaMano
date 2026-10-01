@@ -1,0 +1,717 @@
+<title>Fundo ManaMano</title>
+<meta name="description" content="O Fundo ManaMano é um projeto de extensão da Universidade Federal do Rio de Janeiro (UFRJ) que fortalece mulheres empreendedoras da periferia por meio de formação, acompanhamento e apoio financeiro.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Questrial&display=swap">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"NGO","name":"Fundo ManaMano","slogan":"Fundo de transformação social","url":"https://manamano.org.br","email":"manamano@manamano.org.br","foundingDate":"2020","address":{"@type":"PostalAddress","streetAddress":"Avenida Pasteur, 250, Praia Vermelha","addressLocality":"Rio de Janeiro","addressRegion":"RJ","addressCountry":"BR"},"sameAs":["https://www.instagram.com/fundomanamano/"],"parentOrganization":{"@type":"CollegeOrUniversity","name":"Universidade Federal do Rio de Janeiro"}}
+</script>
+<style>
+/* Layout: seções chapadas alternando como o feed do Instagram (azul, azul claro, vermelho, rosa claro),
+   com a cápsula da barra de informações como navegação e as formas serrilhadas do manual como colagem. */
+:root{
+  /* principais */
+  --azul:#101B47; --vermelho:#A50000; --rosa-claro:#EEE1E1; --azul-claro:#EFF1F8; --branco:#FFFFFF;
+  /* complementares */
+  --azul-medio:#2742A4; --azul-vivo:#5C7CF4; --vermelho-vivo:#E00000; --rosa:#FF9999; --azul-noite:#000723;
+  /* tipografia */
+  --f-titulo:"Anton", "Impact", "Haettenschweiler", "Arial Narrow Bold", sans-serif;
+  --f-texto:"Century Gothic", CenturyGothic, AppleGothic, "Questrial", "Avenir Next", "Trebuchet MS", sans-serif;
+  --h1:clamp(3.4rem, 9.5vw, 7.75rem);
+  --h2:clamp(2.6rem, 6vw, 4.5rem);
+  --h3:clamp(1.55rem, 2.8vw, 2.1rem);
+  --lead:clamp(1.25rem, 2.2vw, 1.6rem);
+  --texto:clamp(1.03rem, 1.2vw, 1.12rem);
+  --legenda:.875rem;
+  /* grade */
+  --margem:clamp(1.25rem, 5.5vw, 4rem);
+  --max:1240px;
+  --gap-titulo:clamp(1.25rem, 3vw, 2rem);
+  --secao:clamp(4.5rem, 10vw, 8.5rem);
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:6.5rem}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *,*::before,*::after{animation:none!important; transition:none!important} }
+body{margin:0; background:var(--azul); color:var(--branco); font-family:var(--f-texto); font-size:var(--texto); line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden}
+img{max-width:100%; display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--f-titulo); font-weight:400; margin:0; letter-spacing:.005em; text-wrap:balance}
+h1{font-size:var(--h1); line-height:1.02}
+h2{font-size:var(--h2); line-height:1.08}
+h3{font-size:var(--h3); line-height:1.15}
+p{margin:0}
+.sr{position:absolute!important; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
+.pular{position:fixed; left:1rem; top:-4rem; z-index:100; background:var(--branco); color:var(--azul); padding:.75rem 1.1rem; border-radius:999px; font-weight:700; text-decoration:none; transition:top .2s}
+.pular:focus{top:calc(env(safe-area-inset-top,0px) + 1rem)}
+:focus-visible{outline:3px solid var(--azul-vivo); outline-offset:3px; border-radius:4px}
+.claro :focus-visible{outline-color:var(--vermelho)}
+
+.wrap{width:100%; max-width:calc(var(--max) + 2*var(--margem)); margin-inline:auto; padding-inline:var(--margem)}
+.secao{position:relative; padding-block:var(--secao); isolation:isolate; overflow:hidden}
+.secao > .wrap{position:relative; z-index:1}
+
+/* ---------- texturas ---------- */
+.tex::before{content:""; position:absolute; inset:0; z-index:0; pointer-events:none; background:var(--tex-cor);
+  -webkit-mask:var(--tex-img) center / var(--tex-tam, cover) repeat; mask:var(--tex-img) center / var(--tex-tam, cover) repeat; opacity:var(--tex-op)}
+.tex-abstrata{--tex-img:url(assets/tex_abstrata.png); --tex-op:.3; --tex-tam:min(900px, 160%) auto}
+.tex-fluida{--tex-img:url(assets/tex_fluida.png); --tex-op:.4; --tex-tam:min(900px, 160%) auto}
+.tex-granulada{--tex-img:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 2.4 0 0 0 -1.05'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E"); --tex-op:.55; --tex-tam:220px 220px}
+
+/* ---------- elementos de marca ---------- */
+.logo{display:block; background:var(--logo-cor, var(--branco)); -webkit-mask:var(--logo-img) center/contain no-repeat; mask:var(--logo-img) center/contain no-repeat}
+.logo-h{--logo-img:url(assets/logo_h.png); aspect-ratio:493/117}
+.logo-hs{--logo-img:url(assets/logo_hs.png); aspect-ratio:486/117}
+.logo-v{--logo-img:url(assets/logo_v.png); aspect-ratio:500/367}
+
+.forma{display:block; background:var(--c); -webkit-mask:var(--m) center/contain no-repeat; mask:var(--m) center/contain no-repeat}
+.f-estrela{--m:url(assets/estrela.png); aspect-ratio:1}
+.f-circulo{--m:url(assets/circulo.png); aspect-ratio:1}
+.f-arco{--m:url(assets/arco.png); aspect-ratio:500/606}
+.f-cupula{--m:url(assets/cupula.png); aspect-ratio:500/492}
+.f-ondas{--m:url(assets/ondas.png); aspect-ratio:1000/302}
+
+.mao{display:block; width:2.6rem; aspect-ratio:122/168; background:var(--ib, var(--branco)); -webkit-mask:url(assets/mao.png) center/contain no-repeat; mask:url(assets/mao.png) center/contain no-repeat; animation:deslizar 2s ease-in-out infinite}
+@keyframes deslizar{0%,100%{transform:translateX(0)}50%{transform:translateX(-6px)}}
+
+.infobar{--ib:var(--branco); display:inline-flex; align-items:stretch; border:2px solid var(--ib); border-radius:999px; color:var(--ib); font-size:.8rem; line-height:1; white-space:nowrap; max-width:100%; font-weight:700; letter-spacing:.01em}
+.infobar > span{display:flex; align-items:center; padding:.5rem .95rem}
+.infobar > span + span{border-left:2px solid var(--ib)}
+.infobar svg{width:1rem; height:1rem; fill:var(--ib)}
+.infobar .ib-heart{padding-inline:.7rem}
+@media (max-width:420px){ .infobar{font-size:.68rem} .infobar > span{padding:.45rem .6rem} }
+
+.destaque{display:inline; padding:.06em .38em; line-height:1.55; -webkit-box-decoration-break:clone; box-decoration-break:clone; background:var(--azul-medio); color:var(--branco)}
+
+.btn{display:inline-flex; align-items:center; justify-content:center; gap:.55rem; min-height:3rem; padding:.7rem 1.5rem; border-radius:999px; font:inherit; font-size:1rem; font-weight:700; text-decoration:none; cursor:pointer; border:2px solid transparent; transition:background .2s, color .2s, border-color .2s}
+.btn-primario{background:var(--vermelho); color:var(--branco); border-color:var(--vermelho)}
+.btn-primario:hover{background:var(--vermelho-vivo); border-color:var(--vermelho-vivo)}
+.btn-secundario{background:transparent; color:var(--ib, var(--branco)); border-color:var(--ib, var(--branco))}
+.btn-secundario:hover{background:var(--ib, var(--branco)); color:var(--azul)}
+.btn svg{width:1.1em; height:1.1em; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round}
+
+.titulo-secao{display:grid; gap:var(--gap-titulo); margin-bottom:clamp(2.5rem, 5vw, 4rem); max-width:52rem}
+.titulo-secao p{font-size:var(--lead); line-height:1.4}
+
+/* ---------- prévia ---------- */
+.previa-faixa{background:var(--rosa); color:var(--azul); font-size:.85rem; line-height:1.4; text-align:center; padding:.6rem var(--margem); font-weight:700}
+.selo{position:absolute; top:.9rem; right:.9rem; z-index:3; background:var(--rosa); color:var(--azul); font-size:.72rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:.3rem .65rem; border-radius:999px; line-height:1.2}
+.ph{opacity:.62; font-style:italic}
+
+/* ---------- navegação ---------- */
+.topo{position:sticky; top:calc(env(safe-area-inset-top,0px) + .75rem); z-index:50; margin-top:.75rem; pointer-events:none}
+.capsula{pointer-events:auto; display:flex; align-items:stretch; background:var(--azul); border:2px solid var(--branco); border-radius:999px; min-height:3.4rem; box-shadow:0 0 0 4px rgba(16,27,71,.0)}
+.capsula > *{display:flex; align-items:center}
+.capsula .cel-logo{padding:0 1.2rem 0 1.35rem; text-decoration:none}
+.capsula .cel-logo .logo{width:8.6rem}
+.capsula nav{flex:1; border-left:2px solid var(--branco); justify-content:center}
+.capsula nav ul{display:flex; gap:clamp(.9rem, 1.8vw, 1.6rem); list-style:none; margin:0; padding:0 1.2rem}
+.capsula nav a{text-decoration:none; font-size:.9rem; font-weight:700; white-space:nowrap; padding:.3rem 0; background:linear-gradient(var(--rosa),var(--rosa)) 0 100%/0 2px no-repeat; transition:background-size .25s}
+.capsula nav a:hover{background-size:100% 2px}
+.capsula .cel-doar{border-left:2px solid var(--branco); background:var(--vermelho); border-radius:0 999px 999px 0; padding:0 1.4rem; text-decoration:none; font-weight:700; font-size:.9rem; white-space:nowrap; transition:background .2s}
+.capsula .cel-doar:hover{background:var(--vermelho-vivo)}
+.capsula .cel-menu{display:none; border-left:2px solid var(--branco); background:none; color:var(--branco); border-top:0; border-bottom:0; border-right:0; padding:0 1.2rem; font:inherit; font-weight:700; font-size:.9rem; cursor:pointer; gap:.5rem; border-radius:0 999px 999px 0}
+.cel-menu svg{width:1.3rem; height:1.3rem; stroke:currentColor; stroke-width:2; fill:none; stroke-linecap:round}
+@media (max-width:1179px){
+  .capsula nav{display:none}
+  .capsula .cel-menu{display:flex}
+  .capsula .cel-doar{border-radius:0; margin-left:auto}
+}
+@media (max-width:520px){
+  .capsula .cel-doar{display:none}
+  .capsula .cel-menu{margin-left:auto}
+  .capsula .cel-logo .logo{width:7.4rem}
+  .capsula .cel-logo{padding-left:1.1rem}
+}
+
+.menu{position:fixed; inset:0; z-index:60; background:var(--azul); display:flex; flex-direction:column; padding:calc(env(safe-area-inset-top,0px) + 1.25rem) var(--margem) calc(env(safe-area-inset-bottom,0px) + 2rem); overflow-y:auto}
+.menu.tex::before{position:fixed}
+.menu-topo{display:flex; justify-content:space-between; align-items:center; position:relative; z-index:1}
+.menu-topo .logo{width:9rem}
+.menu-fechar{background:none; border:2px solid var(--branco); color:var(--branco); border-radius:999px; min-height:2.9rem; padding:0 1.1rem; font:inherit; font-weight:700; cursor:pointer}
+.menu ul{list-style:none; margin:2.5rem 0 2rem; padding:0; display:grid; gap:.35rem; position:relative; z-index:1}
+.menu ul a{font-family:var(--f-titulo); font-size:clamp(2.2rem, 9vw, 3.4rem); line-height:1.15; text-decoration:none; display:inline-block}
+.menu ul a:hover{color:var(--rosa)}
+.menu .btn{position:relative; z-index:1; align-self:flex-start}
+
+/* ---------- hero ---------- */
+.hero{padding-bottom:0; margin-top:-4.15rem; padding-top:calc(4.15rem + clamp(3rem, 7vw, 5.5rem))}
+.hero{--tex-cor:var(--azul-noite)}
+.hero-grade{display:grid; grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr); gap:clamp(2rem, 5vw, 4rem); align-items:center}
+.hero-texto{display:grid; gap:1.6rem; justify-items:start; min-width:0}
+.hero h1{margin-top:.4rem}
+.hero .sub{font-size:var(--lead); max-width:30rem}
+.hero .paragrafos{display:grid; gap:1rem; max-width:36rem; color:var(--azul-claro)}
+.acoes{display:flex; flex-wrap:wrap; gap:.8rem; margin-top:.4rem}
+.colagem{position:relative; width:100%; max-width:540px; aspect-ratio:1/1.02; justify-self:end}
+.colagem > *{position:absolute}
+.colagem .c1{--c:var(--azul-medio); width:62%; left:0; top:9%}
+.colagem .c2{--c:var(--vermelho-vivo); width:47%; right:3%; bottom:0}
+.colagem .c3{--c:var(--rosa); width:41%; right:0; top:0; animation:girar 60s linear infinite}
+.colagem .c4{--c:var(--azul-vivo); width:44%; left:9%; bottom:0}
+.colagem .c5{--c:var(--rosa); width:88%; left:6%; top:44%; opacity:.85}
+.colagem .ic{width:clamp(56px, 7vw, 76px); aspect-ratio:1}
+.colagem .ic1{left:calc(31% - clamp(28px,3.5vw,38px)); top:calc(40% - clamp(28px,3.5vw,38px))}
+.colagem .ic2{right:calc(26.5% - clamp(28px,3.5vw,38px)); bottom:22%}
+.colagem .ic3{left:calc(31% - clamp(28px,3.5vw,38px)); bottom:12%}
+.colagem .foto-hero{inset:auto 6% 0 auto; width:70%; filter:url(#contorno-branco)}
+@keyframes girar{to{transform:rotate(360deg)}}
+.hero-rodape{display:flex; justify-content:flex-end; padding-top:1.5rem}
+.indicadores{border-top:2px solid rgba(255,255,255,.22); margin-top:clamp(2.5rem, 6vw, 4.5rem); display:grid; grid-template-columns:repeat(3, minmax(0,1fr))}
+.indicador{padding:clamp(1.5rem, 3vw, 2.4rem) clamp(1rem, 2.5vw, 2rem) clamp(2rem, 4vw, 3rem); display:flex; flex-direction:column; justify-content:flex-end}
+.indicador + .indicador{border-left:2px solid rgba(255,255,255,.22)}
+.indicador:first-child{padding-left:0}
+.indicador .pre, .indicador .pos{font-size:1.05rem; line-height:1.35}
+.indicador .num{font-family:var(--f-titulo); font-size:clamp(3.6rem, 8vw, 6.4rem); line-height:1; color:var(--rosa); font-variant-numeric:tabular-nums; margin-block:.1rem .3rem}
+@media (max-width:860px){
+  .hero-grade{grid-template-columns:1fr}
+  .colagem{justify-self:center; max-width:420px; margin-top:1rem}
+  .indicadores{grid-template-columns:1fr}
+  .indicador{padding:1.4rem 0}
+  .indicador + .indicador{border-left:0; border-top:2px solid rgba(255,255,255,.22)}
+}
+
+/* ---------- como apoiamos ---------- */
+.apoio{background:var(--azul-claro); color:var(--azul); --tex-cor:var(--azul-vivo)}
+.cards-apoio{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:clamp(1rem, 2vw, 1.5rem); align-items:stretch}
+.card-apoio{border-radius:8px; padding:clamp(1.6rem, 3vw, 2.4rem); display:flex; flex-direction:column; gap:1.1rem; color:var(--branco); position:relative; overflow:hidden; min-width:0}
+.card-apoio.az{background:var(--azul)}
+.card-apoio.vm{background:var(--vermelho)}
+.card-apoio .icone{width:clamp(56px, 6vw, 72px); height:auto; aspect-ratio:1}
+.card-apoio h3{font-size:var(--h3)}
+.card-apoio .txt{display:grid; gap:.9rem}
+.card-apoio .forma{position:absolute; width:46%; right:-14%; bottom:-12%; opacity:.22; z-index:0}
+.card-apoio > *:not(.forma){position:relative; z-index:1}
+@media (max-width:960px){ .cards-apoio{grid-template-columns:1fr} .card-apoio .forma{width:30%} }
+
+/* ---------- relatos ---------- */
+.relatos{background:var(--vermelho); --tex-cor:var(--vermelho-vivo)}
+.lista-relatos{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:clamp(1rem, 2vw, 1.5rem)}
+.relato{position:relative; background:var(--branco); color:var(--azul); border-radius:8px; padding:clamp(1.6rem, 3vw, 2.4rem); display:flex; flex-direction:column; gap:1.25rem; min-width:0; margin:0}
+.relato .aspas{font-family:var(--f-titulo); font-size:5.5rem; line-height:.7; color:var(--rosa); height:2.6rem}
+.relato blockquote{margin:0; font-size:clamp(1.12rem, 1.6vw, 1.3rem); line-height:1.5}
+.relato figcaption{margin-top:auto; display:grid; gap:.15rem; padding-top:1rem; border-top:2px solid var(--rosa-claro)}
+.relato .nome{font-family:var(--f-titulo); font-size:1.35rem; line-height:1.2}
+.relato .papel{font-size:var(--legenda); color:var(--vermelho)}
+.relato.vazio{background:transparent; color:var(--branco); border:2px dashed rgba(255,255,255,.55)}
+.relato.vazio figcaption{border-top-color:rgba(255,255,255,.3)}
+.relato.vazio .papel{color:var(--rosa)}
+
+/* ---------- história ---------- */
+.historia{background:var(--rosa-claro); color:var(--azul)}
+.historia-grade{display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); gap:clamp(2rem, 6vw, 5rem); align-items:start}
+.ano{position:relative; padding-top:1rem}
+.ano .forma{position:absolute; left:-4%; top:38%; width:108%; --c:var(--vermelho-vivo); opacity:.35}
+.ano .forma.b{--c:var(--azul-medio); top:58%; left:6%; opacity:.25}
+.ano span{position:relative; display:block; font-family:var(--f-titulo); font-size:clamp(7rem, 20vw, 16rem); line-height:.85; color:var(--vermelho); letter-spacing:-.01em}
+.historia-texto{display:grid; gap:var(--gap-titulo)}
+.historia-texto .paragrafos{display:grid; gap:1.15rem; max-width:38rem}
+.historia-texto .paragrafos p:first-child{font-size:var(--lead); line-height:1.45}
+@media (max-width:860px){ .historia-grade{grid-template-columns:1fr} .ano span{font-size:clamp(6rem, 34vw, 10rem)} }
+
+/* ---------- parceiros (módulo opcional) ---------- */
+.parceiros{background:var(--azul); padding-block:clamp(3rem, 6vw, 4.5rem)}
+.parceiros ul{list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:1.5rem 3rem; align-items:center}
+
+/* ---------- empreendedoras ---------- */
+.empreendedoras{background:var(--azul); --tex-cor:var(--azul-vivo)}
+.trilho{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:clamp(1rem, 2vw, 1.5rem)}
+.emp{position:relative; display:flex; flex-direction:column; min-width:0; background:var(--azul-noite); border-radius:8px; overflow:hidden}
+.emp-midia{position:relative; aspect-ratio:4/3.4; display:grid; place-items:end center; overflow:hidden; background:var(--azul-medio)}
+.emp-midia .forma{position:absolute; width:72%; bottom:-6%; left:14%}
+.emp-midia img{position:relative; z-index:1; width:78%; filter:url(#contorno-branco)}
+.emp-midia .ph-foto{position:absolute; inset:auto 0 1rem 0; text-align:center; z-index:2; font-size:var(--legenda); color:var(--branco)}
+.emp-corpo{padding:1.5rem clamp(1.25rem, 2vw, 1.6rem) 1.7rem; display:flex; flex-direction:column; gap:.85rem; flex:1}
+.emp h3{font-size:clamp(1.6rem, 2.4vw, 2rem)}
+.emp .quem{font-size:1rem; color:var(--azul-claro)}
+.etiqueta{align-self:flex-start; border:2px solid var(--rosa); color:var(--rosa); border-radius:999px; padding:.25rem .8rem; font-size:.8rem; font-weight:700; line-height:1.3}
+.emp .desc{font-size:1rem; line-height:1.55; color:var(--azul-claro)}
+.emp .rede{margin-top:auto; display:inline-flex; align-items:center; gap:.45rem; font-weight:700; text-decoration:none; color:var(--branco); align-self:flex-start; padding-top:.4rem; border-bottom:2px solid var(--azul-vivo)}
+.emp .rede svg{width:1rem; height:1rem; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round}
+.filtros{display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:1.5rem}
+.filtros button{--ib:var(--branco)}
+.filtros button[aria-pressed="true"]{background:var(--branco); color:var(--azul)}
+.dica-deslizar{display:none; align-items:center; gap:.75rem; justify-content:flex-end; margin-top:1.1rem; font-size:var(--legenda)}
+@media (max-width:860px){
+  .trilho{display:flex; overflow-x:auto; scroll-snap-type:x mandatory; gap:1rem; margin-inline:calc(-1*var(--margem)); padding-inline:var(--margem); scroll-padding-inline:var(--margem); padding-bottom:.5rem; scrollbar-width:none}
+  .trilho::-webkit-scrollbar{display:none}
+  .trilho > *{flex:0 0 min(82%, 340px); scroll-snap-align:start}
+  .dica-deslizar.ativa{display:flex}
+  .lista-relatos{display:flex; overflow-x:auto; scroll-snap-type:x mandatory; gap:1rem; margin-inline:calc(-1*var(--margem)); padding-inline:var(--margem); scroll-padding-inline:var(--margem); scrollbar-width:none}
+  .lista-relatos::-webkit-scrollbar{display:none}
+  .lista-relatos > *{flex:0 0 min(86%, 380px); scroll-snap-align:start}
+}
+
+/* ---------- professores ---------- */
+.professores{background:var(--azul-claro); color:var(--azul)}
+.grade-prof{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:clamp(1.25rem, 2.5vw, 2rem)}
+.prof{position:relative; display:flex; flex-direction:column; gap:.6rem; min-width:0}
+.prof-foto{position:relative; aspect-ratio:500/606; margin-bottom:.7rem}
+.prof-foto .forma{position:absolute; inset:0; width:100%}
+.prof-foto img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:grayscale(1) contrast(1.15); -webkit-mask:url(assets/arco.png) center/contain no-repeat; mask:url(assets/arco.png) center/contain no-repeat}
+.prof-foto .ph-foto{position:absolute; inset:auto 0 1.2rem 0; text-align:center; color:var(--branco); font-size:var(--legenda)}
+.prof h3{font-size:clamp(1.45rem, 2vw, 1.75rem)}
+.prof .area{font-size:.95rem}
+.prof .disc{color:var(--vermelho); font-weight:700; font-size:.95rem}
+.prof .bio{font-size:.98rem; line-height:1.55}
+.prof .selo{top:.7rem; right:.7rem}
+@media (max-width:960px){ .grade-prof{grid-template-columns:repeat(2, minmax(0,1fr))} }
+@media (max-width:440px){ .grade-prof{gap:1.5rem 1rem} .prof h3{font-size:1.3rem} .prof .bio,.prof .area,.prof .disc{font-size:.9rem} }
+
+/* ---------- envolva-se ---------- */
+.envolva{background:var(--azul); --tex-cor:var(--azul-vivo)}
+.envolva-grade{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:clamp(1rem, 2vw, 1.5rem)}
+.bloco{border-radius:8px; padding:clamp(1.75rem, 4vw, 3rem); display:flex; flex-direction:column; gap:1.3rem; position:relative; overflow:hidden; min-width:0}
+.bloco.extensionista{background:var(--azul-medio)}
+.bloco.doacao{background:var(--vermelho)}
+.bloco .icone{width:64px; aspect-ratio:1}
+.bloco .txt{display:grid; gap:1rem; max-width:34rem}
+.bloco > .forma{position:absolute; width:42%; right:-12%; top:-14%; opacity:.25}
+.bloco > *:not(.forma){position:relative}
+.pix{background:var(--branco); color:var(--azul); border-radius:8px; padding:1.25rem 1.35rem; display:grid; gap:.9rem; margin-top:.4rem}
+.pix .rotulo{font-weight:700; font-size:.95rem}
+.pix .chave{font-family:var(--f-texto); font-size:clamp(.92rem, 4vw, 1.35rem); font-weight:700; overflow-wrap:anywhere; user-select:all; line-height:1.3}
+.pix .linha{display:flex; flex-wrap:wrap; gap:.8rem; align-items:center}
+.aviso{font-size:.9rem; color:var(--vermelho); font-weight:700; min-height:1.3em}
+@media (max-width:860px){ .envolva-grade{grid-template-columns:1fr} }
+@media (max-width:440px){ .pix{padding:1rem} .bloco{padding:1.5rem 1.25rem} }
+
+/* ---------- contato ---------- */
+.contato{background:var(--azul-noite)}
+.contato-grade{display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr); gap:clamp(2.5rem, 6vw, 5rem); align-items:end}
+.contatos{list-style:none; margin:0; padding:0; display:grid; gap:0}
+.contatos li{display:grid; grid-template-columns:8.5rem minmax(0,1fr); gap:1rem; padding:1.15rem 0; border-top:2px solid rgba(255,255,255,.14); align-items:baseline}
+.contatos li:last-child{border-bottom:2px solid rgba(255,255,255,.14)}
+.contatos .rot{color:var(--rosa); font-weight:700; font-size:.95rem}
+.contatos .val{font-size:1.1rem; line-height:1.5; overflow-wrap:anywhere}
+.contatos a{text-decoration-color:var(--azul-vivo); text-underline-offset:.25em; text-decoration-thickness:2px}
+.contatos .mini{display:inline-flex; align-items:center; gap:.35rem; margin-left:.6rem; background:none; border:0; color:var(--rosa); font:inherit; font-size:.85rem; font-weight:700; cursor:pointer; padding:.2rem 0; text-decoration:underline; text-underline-offset:.25em}
+.marca-contato{display:grid; gap:1.75rem; justify-items:start}
+.marca-contato .logo{width:min(260px, 70%)}
+@media (max-width:860px){ .contato-grade{grid-template-columns:1fr} .contatos li{grid-template-columns:1fr; gap:.2rem} }
+
+.rodape{background:var(--azul-noite); border-top:2px solid rgba(255,255,255,.14); padding-block:2rem calc(env(safe-area-inset-bottom,0px) + 2rem); font-size:.88rem; color:var(--azul-claro)}
+.rodape .wrap{display:flex; flex-wrap:wrap; gap:1rem 2rem; justify-content:space-between; align-items:center}
+.rodape ul{list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:.4rem 1.3rem}
+.rodape a{text-decoration:none}
+.rodape a:hover{text-decoration:underline}
+.creditos{display:grid; gap:.2rem}
+
+.oculto{display:none!important}
+[hidden]{display:none!important}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="contorno-branco" x="-10%" y="-10%" width="120%" height="120%">
+    <feMorphology in="SourceAlpha" operator="dilate" radius="8" result="d"/>
+    <feFlood flood-color="#FFFFFF"/>
+    <feComposite in2="d" operator="in" result="borda"/>
+    <feMerge><feMergeNode in="borda"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <symbol id="i-coracao" viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-10-9.3C.3 8.4 2.1 4.5 5.9 4.1c2.2-.2 4.1 1.1 6.1 3.2 2-2.1 3.9-3.4 6.1-3.2 3.8.4 5.6 4.3 3.9 7.6C19.5 16.4 12 21 12 21z"/></symbol>
+  <symbol id="i-externo" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol>
+  <symbol id="i-copiar" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a1 1 0 0 1 1-1h9"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h18"/></symbol>
+</svg>
+
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+<div id="previa"></div>
+
+<header class="topo">
+  <div class="wrap">
+    <div class="capsula">
+      <a class="cel-logo" href="#inicio" aria-label="Fundo ManaMano, início"><span class="logo logo-hs"></span></a>
+      <nav aria-label="Seções"><ul id="nav-links"></ul></nav>
+      <a class="cel-doar" href="#doacao">Faça uma Doação</a>
+      <button class="cel-menu" id="abrir-menu" aria-expanded="false" aria-controls="menu"><svg aria-hidden="true"><use href="#i-menu"/></svg>Menu</button>
+    </div>
+  </div>
+</header>
+
+<div class="menu tex tex-abstrata" id="menu" role="dialog" aria-modal="true" aria-label="Menu" hidden style="--tex-cor:var(--azul-noite)">
+  <div class="menu-topo"><span class="logo logo-hs" role="img" aria-label="ManaMano"></span><button class="menu-fechar" id="fechar-menu">Fechar</button></div>
+  <ul id="menu-links"></ul>
+  <a class="btn btn-primario" href="#doacao" data-fecha>Faça uma Doação</a>
+</div>
+
+<main id="conteudo">
+  <section class="secao hero tex tex-abstrata" id="inicio" aria-labelledby="t-inicio">
+    <div class="wrap">
+      <div class="hero-grade">
+        <div class="hero-texto">
+          <div class="infobar" aria-label="@fundomanamano, Fundo de transformação social">
+            <span class="ib-heart"><svg aria-hidden="true"><use href="#i-coracao"/></svg></span><span>@fundomanamano</span><span>Fundo de transformação social</span>
+          </div>
+          <h1 id="t-inicio" data-c="hero.titulo"></h1>
+          <p class="sub"><span class="destaque" data-c="hero.subtitulo"></span></p>
+          <div class="paragrafos" data-p="hero.paragrafos"></div>
+          <div class="acoes">
+            <a class="btn btn-primario" href="#doacao">Faça uma Doação</a>
+            <a class="btn btn-secundario" href="#empreendedoras" id="cta-emp">Nossas Empreendedoras</a>
+          </div>
+        </div>
+        <div class="colagem" aria-hidden="true" id="colagem">
+          <span class="forma f-circulo c1"></span>
+          <span class="forma f-cupula c4"></span>
+          <span class="forma f-arco c2"></span>
+          <span class="forma f-estrela c3"></span>
+          <span class="forma f-ondas c5"></span>
+          <img class="ic ic1" src="assets/ic_az_aprend.png" alt="">
+          <img class="ic ic2" src="assets/ic_vm_radar.png" alt="">
+          <img class="ic ic3" src="assets/ic_az_projeto.png" alt="">
+        </div>
+      </div>
+      <div class="indicadores" id="indicadores"></div>
+    </div>
+    <div class="wrap hero-rodape" aria-hidden="true" style="position:absolute; right:0; left:0; bottom:1.4rem; z-index:2"><span class="mao"></span></div>
+  </section>
+
+  <section class="secao apoio claro tex tex-granulada" id="como-apoiamos" aria-labelledby="t-apoio">
+    <div class="wrap">
+      <div class="titulo-secao"><h2 id="t-apoio" data-c="apoio.titulo"></h2></div>
+      <div class="cards-apoio" id="cards-apoio"></div>
+    </div>
+  </section>
+
+  <section class="secao relatos tex tex-fluida" id="relatos" aria-labelledby="t-relatos">
+    <div class="wrap">
+      <div class="titulo-secao"><h2 id="t-relatos">Relatos</h2></div>
+      <div class="lista-relatos" id="lista-relatos"></div>
+      <div class="dica-deslizar" id="dica-relatos" aria-hidden="true"><span class="mao" style="--ib:var(--rosa)"></span></div>
+    </div>
+  </section>
+
+  <section class="secao historia claro" id="nossa-historia" aria-labelledby="t-historia">
+    <div class="wrap historia-grade">
+      <div class="ano" aria-hidden="true"><span class="forma f-ondas"></span><span class="forma f-ondas b"></span><span>2020</span></div>
+      <div class="historia-texto">
+        <h2 id="t-historia">Nossa História</h2>
+        <div class="paragrafos" data-p="historia.paragrafos"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="parceiros oculto" id="parceiros" aria-labelledby="t-parceiros">
+    <div class="wrap"><h2 id="t-parceiros" class="sr">Organizações parceiras</h2><ul id="lista-parceiros"></ul></div>
+  </section>
+
+  <section class="secao empreendedoras tex tex-granulada" id="empreendedoras" aria-labelledby="t-emp">
+    <div class="wrap">
+      <div class="titulo-secao">
+        <h2 id="t-emp">Nossas Empreendedoras</h2>
+        <p data-c="empreendedorasIntro"></p>
+      </div>
+      <div class="filtros oculto" id="filtros" role="group" aria-label="Filtrar por área de atuação"></div>
+      <div class="trilho" id="trilho-emp"></div>
+      <div class="dica-deslizar" id="dica-emp" aria-hidden="true"><span class="mao"></span></div>
+    </div>
+  </section>
+
+  <section class="secao professores claro" id="professores" aria-labelledby="t-prof">
+    <div class="wrap">
+      <div class="titulo-secao"><h2 id="t-prof">Nossos Professores</h2></div>
+      <div class="grade-prof" id="grade-prof"></div>
+    </div>
+  </section>
+
+  <section class="secao envolva tex tex-granulada" id="envolva-se" aria-labelledby="t-envolva">
+    <div class="wrap">
+      <div class="titulo-secao"><h2 id="t-envolva">Envolva-se</h2></div>
+      <div class="envolva-grade">
+        <article class="bloco extensionista" aria-labelledby="t-ext">
+          <span class="forma f-circulo" style="--c:var(--azul-vivo)" aria-hidden="true"></span>
+          <img class="icone" src="assets/ic_az_aprend.png" alt="">
+          <h3 id="t-ext">Seja Extensionista</h3>
+          <div class="txt" data-p="extensionista"></div>
+          <a class="btn btn-secundario" style="align-self:flex-start" href="https://www.instagram.com/fundomanamano/" target="_blank" rel="noopener noreferrer">@fundomanamano <svg aria-hidden="true"><use href="#i-externo"/></svg><span class="sr">(abre em nova aba)</span></a>
+        </article>
+        <article class="bloco doacao" id="doacao" aria-labelledby="t-doacao">
+          <span class="forma f-estrela" style="--c:var(--vermelho-vivo)" aria-hidden="true"></span>
+          <img class="icone" src="assets/ic_vm_projeto.png" alt="">
+          <h3 id="t-doacao">Faça uma Doação</h3>
+          <div class="txt" data-p="doacao.texto"></div>
+          <div class="pix">
+            <span class="rotulo">Chave Pix:</span>
+            <span class="chave" id="chave-pix" data-c="doacao.pix"></span>
+            <div class="linha">
+              <button class="btn btn-primario" id="copiar-pix" type="button"><svg aria-hidden="true"><use href="#i-copiar"/></svg>Copiar chave Pix</button>
+              <span class="aviso" id="aviso-pix" role="status" aria-live="polite"></span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="secao contato" id="contato" aria-labelledby="t-contato">
+    <div class="wrap">
+      <div class="titulo-secao"><h2 id="t-contato">Contato</h2></div>
+      <div class="contato-grade">
+        <ul class="contatos" id="lista-contatos"></ul>
+        <div class="marca-contato">
+          <span class="logo logo-v" role="img" aria-label="ManaMano, Fundo de transformação social"></span>
+          <div class="infobar" style="--ib:var(--rosa)" aria-label="@fundomanamano, Fundo de transformação social">
+            <span class="ib-heart"><svg aria-hidden="true"><use href="#i-coracao"/></svg></span><span>@fundomanamano</span><span>Fundo de transformação social</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="rodape">
+  <div class="wrap">
+    <div class="creditos">
+      <span>© 2026 Fundo ManaMano · Projeto de extensão da UFRJ</span>
+      <span>Identidade visual: LUPA</span>
+    </div>
+    <nav aria-label="Rodapé"><ul id="rodape-links"></ul></nav>
+  </div>
+</footer>
+
+<script>
+/* =====================================================================
+   CONTEÚDO DO SITE
+   Tudo o que aparece no site está neste objeto. Para atualizar:
+   1. Edite o texto entre aspas. Não apague vírgulas nem chaves.
+   2. Empreendedoras, professores e relatos só aparecem quando
+      "publicado: true". Antes de publicar, confirme a autorização de
+      uso de imagem e de nome assinada pela pessoa.
+   3. Fotos: salve em assets/fotos/ e informe o caminho em "foto".
+      Para empreendedoras, prefira foto recortada (PNG sem fundo).
+   4. modoPrevia: true mostra os itens de exemplo com um selo.
+      Antes de colocar o site no ar, mude para false.
+   ===================================================================== */
+const CONTEUDO = {
+  modoPrevia: true,
+
+  hero: {
+    titulo: "Fundo ManaMano",
+    subtitulo: "Uma rede de apoio ao empreendedorismo feminino de periferia",
+    paragrafos: [
+      "O Fundo ManaMano é um projeto de extensão da Universidade Federal do Rio de Janeiro (UFRJ) que fortalece mulheres empreendedoras da periferia por meio de formação, acompanhamento e apoio financeiro.",
+      "Desde 2020, construímos uma rede que conecta universidade, organizações parceiras e empreendedoras, promovendo desenvolvimento econômico, autonomia e fortalecimento comunitário."
+    ],
+    foto: null, // ex.: { src: "assets/fotos/turma.png", alt: "Empreendedoras da turma de 2025 reunidas na Praia Vermelha" }
+    indicadores: [
+      { pre: "Mais de", num: 100, pos: "empreendedoras atendidas" },
+      { pre: "", num: 6, pos: "anos de atuação" },
+      { pre: "Projeto de extensão da", num: "UFRJ", pos: "" }
+    ]
+  },
+
+  apoio: {
+    titulo: "Como apoiamos nossas empreendedoras",
+    cards: [
+      { titulo: "Formação", cor: "az", icone: "assets/ic_az_aprend.png", forma: "f-estrela",
+        paragrafos: ["Durante um ano, as participantes recebem aulas sobre empreendedorismo ministradas por professores da UFRJ e instituições parceiras. Os conteúdos abordam temas essenciais para a gestão e o crescimento dos negócios."] },
+      { titulo: "Capital-Semente", cor: "vm", icone: "assets/ic_vm_radar.png", forma: "f-circulo",
+        paragrafos: ["Ao longo do programa, as empreendedoras têm acesso a recursos financeiros destinados ao fortalecimento de seus empreendimentos, contribuindo para investimentos e expansão de suas atividades."] },
+      { titulo: "Rede de Apoio", cor: "az", icone: "assets/ic_az_projeto.png", forma: "f-cupula",
+        paragrafos: ["As participantes contam com acompanhamento de estudantes da UFRJ, rodas de conversa conduzidas por profissionais convidados e uma rede de troca de experiências entre mulheres empreendedoras.",
+                     "Além disso, seus negócios recebem divulgação nas redes sociais do ManaMano, ampliando sua visibilidade e alcance."] }
+    ]
+  },
+
+  relatos: [
+    { id: "r1", publicado: false, aguardandoAutorizacao: true,
+      texto: "Quero dizer a vocês que estou muito satisfeita com a minha logomarca. Eu e minhas sócias estamos muito felizes pelo trabalho que vocês fizeram. Vocês atingiram além das nossas expectativas.",
+      nome: "Maria Helena", papel: "Empreendedora da turma de 2025" },
+    { id: "r2", publicado: false, texto: "", nome: "", papel: "Professora de Formação de Custos" },
+    { id: "r3", publicado: false, texto: "", nome: "", papel: "Extensionista de Comunicação" },
+    { id: "r4", publicado: false, texto: "", nome: "", papel: "Representante de Organização Parceira" }
+  ],
+
+  historia: {
+    paragrafos: [
+      "O Fundo ManaMano surgiu em 2020, em meio aos desafios impostos pela pandemia da COVID-19. A iniciativa foi criada para apoiar empreendedoras da periferia do Rio de Janeiro por meio da troca de conhecimentos, do fortalecimento de redes de apoio e da promoção de oportunidades de desenvolvimento.",
+      "Como projeto de extensão da Universidade Federal do Rio de Janeiro, o ManaMano reúne docentes, estudantes e parceiros em uma ação que aproxima a universidade da sociedade, compartilhando conhecimento e contribuindo para a transformação social.",
+      "As empreendedoras participantes são indicadas por organizações parceiras e recebem formação continuada durante um ano. Ao longo desse período, contam com acompanhamento de monitores da UFRJ, participam de rodas de conversa mensais e têm seus negócios divulgados pelas redes sociais do projeto."
+    ]
+  },
+
+  parceiros: { ativo: false, lista: [] }, // ex.: { nome: "Criola", logo: "assets/parceiros/criola.png", url: "https://..." }
+
+  empreendedorasIntro: "Conheça algumas das mulheres que fazem parte da rede ManaMano.",
+  empreendedoras: [
+    { id: "e1", publicado: false, nomeNegocio: "", empreendedora: "", areaAtuacao: "", descricao: "", redeSocial: null, foto: null, turma: "" },
+    { id: "e2", publicado: false, nomeNegocio: "", empreendedora: "", areaAtuacao: "", descricao: "", redeSocial: null, foto: null, turma: "" },
+    { id: "e3", publicado: false, nomeNegocio: "", empreendedora: "", areaAtuacao: "", descricao: "", redeSocial: null, foto: null, turma: "" }
+    // redeSocial: { rotulo: "@nomedonegocio", url: "https://www.instagram.com/nomedonegocio/" }
+    // foto: { src: "assets/fotos/nome.png", alt: "Descrição da foto" }
+  ],
+
+  professores: [
+    { id: "p1", publicado: false, nome: "", areaAtuacao: "", disciplina: "", miniBio: "", foto: null },
+    { id: "p2", publicado: false, nome: "", areaAtuacao: "", disciplina: "", miniBio: "", foto: null },
+    { id: "p3", publicado: false, nome: "", areaAtuacao: "", disciplina: "", miniBio: "", foto: null },
+    { id: "p4", publicado: false, nome: "", areaAtuacao: "", disciplina: "", miniBio: "", foto: null }
+  ],
+
+  extensionista: [
+    "A cada semestre, o Fundo ManaMano abre processos seletivos para estudantes da Universidade Federal do Rio de Janeiro interessados em atuar nas áreas de monitoria e comunicação.",
+    "As oportunidades são divulgadas pelas redes sociais do projeto e pelos professores participantes."
+  ],
+
+  doacao: {
+    texto: ["Sua contribuição ajuda a fortalecer o empreendedorismo feminino de periferia e ampliar o impacto social do projeto."],
+    pix: "comunicacao@asplande.org.br"
+  },
+
+  contato: {
+    instagram: { rotulo: "@fundomanamano", url: "https://www.instagram.com/fundomanamano/" },
+    facebook: { rotulo: "Fundo ManaMano", url: "" }, // preencher com o endereço da página
+    email: "manamano@manamano.org.br",
+    endereco: ["Universidade Federal do Rio de Janeiro (UFRJ)", "Avenida Pasteur, 250, Praia Vermelha", "Rio de Janeiro, RJ"],
+    mapa: "https://www.google.com/maps/search/?api=1&query=Avenida+Pasteur+250+Praia+Vermelha+Rio+de+Janeiro"
+  }
+};
+
+/* ===================== a partir daqui, apenas código ===================== */
+(function(){
+  const C = CONTEUDO, P = C.modoPrevia;
+  const esc = s => String(s ?? "").replace(/[&<>"']/g, m => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
+  const get = path => path.split(".").reduce((o,k)=>o?.[k], C);
+  const $ = s => document.querySelector(s);
+  const formas = ["f-estrela","f-circulo","f-arco","f-cupula"];
+  const coresForma = ["var(--rosa)","var(--azul-vivo)","var(--vermelho-vivo)","var(--rosa)"];
+  const ext = `<svg aria-hidden="true"><use href="#i-externo"/></svg><span class="sr">(abre em nova aba)</span>`;
+
+  document.querySelectorAll("[data-c]").forEach(el => el.textContent = get(el.dataset.c));
+  document.querySelectorAll("[data-p]").forEach(el => {
+    const v = get(el.dataset.p); el.innerHTML = (Array.isArray(v) ? v : [v]).map(t => `<p>${esc(t)}</p>`).join("");
+  });
+
+  if (P) $("#previa").innerHTML = `<div class="previa-faixa">Prévia do site. Itens com selo aguardam conteúdo ou autorização e não aparecem na versão publicada.</div>`;
+
+  /* hero */
+  if (C.hero.foto) {
+    const img = document.createElement("img");
+    img.className = "foto-hero"; img.src = C.hero.foto.src; img.alt = C.hero.foto.alt;
+    $("#colagem").append(img); $("#colagem").removeAttribute("aria-hidden");
+  }
+  $("#indicadores").innerHTML = C.hero.indicadores.map(i => `
+    <p class="indicador">
+      ${i.pre ? `<span class="pre">${esc(i.pre)}</span>` : ""}
+      <span class="num" ${typeof i.num === "number" ? `data-alvo="${i.num}"` : ""}>${esc(i.num)}</span>
+      ${i.pos ? `<span class="pos">${esc(i.pos)}</span>` : ""}
+    </p>`).join("");
+
+  /* como apoiamos */
+  $("#cards-apoio").innerHTML = C.apoio.cards.map(c => `
+    <article class="card-apoio ${c.cor}">
+      <span class="forma ${c.forma}" style="--c:${c.cor === "az" ? "var(--azul-vivo)" : "var(--rosa)"}" aria-hidden="true"></span>
+      <img class="icone" src="${esc(c.icone)}" alt="">
+      <h3>${esc(c.titulo)}</h3>
+      <div class="txt">${c.paragrafos.map(p => `<p>${esc(p)}</p>`).join("")}</div>
+    </article>`).join("");
+
+  /* relatos */
+  const relatos = C.relatos.filter(r => (r.publicado && r.texto) || P);
+  $("#lista-relatos").innerHTML = relatos.map(r => {
+    const vazio = !r.texto;
+    const selo = !r.publicado ? `<span class="selo">${r.aguardandoAutorizacao ? "Aguardando autorização" : "Exemplo"}</span>` : "";
+    return `<figure class="relato ${vazio ? "vazio" : ""}">${selo}
+      <span class="aspas" aria-hidden="true">“</span>
+      <blockquote>${vazio ? `<p class="ph">Depoimento a ser inserido.</p>` : `<p>${esc(r.texto)}</p>`}</blockquote>
+      <figcaption><span class="nome ${r.nome ? "" : "ph"}">${esc(r.nome || "Nome")}</span><span class="papel">${esc(r.papel)}</span></figcaption>
+    </figure>`;
+  }).join("");
+  if (!relatos.length) $("#relatos").classList.add("oculto");
+
+  /* parceiros */
+  if (C.parceiros.ativo && C.parceiros.lista.length) {
+    $("#parceiros").classList.remove("oculto");
+    $("#lista-parceiros").innerHTML = C.parceiros.lista.map(p => `<li><a href="${esc(p.url)}" target="_blank" rel="noopener noreferrer"><img src="${esc(p.logo)}" alt="${esc(p.nome)}" style="height:48px;width:auto"></a></li>`).join("");
+  }
+
+  /* empreendedoras */
+  const emps = C.empreendedoras.filter(e => e.publicado || P);
+  const cardEmp = (e, i) => {
+    const f = formas[i % 4], cor = coresForma[i % 4];
+    const ph = (v, rot) => v ? esc(v) : `<span class="ph">${rot}</span>`;
+    return `<article class="emp" data-area="${esc(e.areaAtuacao)}">
+      ${!e.publicado ? `<span class="selo">Exemplo</span>` : ""}
+      <div class="emp-midia"><span class="forma ${f}" style="--c:${cor}" aria-hidden="true"></span>
+        ${e.foto ? `<img src="${esc(e.foto.src)}" alt="${esc(e.foto.alt)}" loading="lazy">` : (P ? `<span class="ph-foto ph">Foto</span>` : "")}
+      </div>
+      <div class="emp-corpo">
+        <h3>${ph(e.nomeNegocio, "Nome do negócio")}</h3>
+        <p class="quem">${ph(e.empreendedora, "Empreendedora")}</p>
+        <span class="etiqueta">${ph(e.areaAtuacao, "Área de atuação")}</span>
+        <p class="desc">${ph(e.descricao, "Descrição do negócio")}</p>
+        ${e.redeSocial?.url ? `<a class="rede" href="${esc(e.redeSocial.url)}" target="_blank" rel="noopener noreferrer">${esc(e.redeSocial.rotulo)} ${ext}</a>` : (P ? `<span class="rede ph">Rede social</span>` : "")}
+      </div>
+    </article>`;
+  };
+  const trilho = $("#trilho-emp");
+  const desenhaEmp = area => { trilho.innerHTML = emps.filter(e => !area || e.areaAtuacao === area).map(cardEmp).join(""); };
+  desenhaEmp();
+  if (emps.length > 1) $("#dica-emp").classList.add("ativa");
+  const areas = [...new Set(emps.filter(e => e.publicado && e.areaAtuacao).map(e => e.areaAtuacao))];
+  if (emps.filter(e => e.publicado).length > 9 && areas.length > 1) {
+    const fl = $("#filtros"); fl.classList.remove("oculto");
+    fl.innerHTML = [`<button class="btn btn-secundario" aria-pressed="true" data-area="">Todas</button>`, ...areas.map(a => `<button class="btn btn-secundario" aria-pressed="false" data-area="${esc(a)}">${esc(a)}</button>`)].join("");
+    fl.addEventListener("click", ev => { const b = ev.target.closest("button"); if (!b) return;
+      fl.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b)); desenhaEmp(b.dataset.area); });
+  }
+  if (!emps.length) { $("#empreendedoras").classList.add("oculto"); $("#cta-emp").classList.add("oculto"); }
+
+  /* professores */
+  const profs = C.professores.filter(p => p.publicado || P);
+  $("#grade-prof").innerHTML = profs.map((p, i) => {
+    const ph = (v, rot) => v ? esc(v) : `<span class="ph">${rot}</span>`;
+    return `<article class="prof">
+      ${!p.publicado ? `<span class="selo">Exemplo</span>` : ""}
+      <div class="prof-foto"><span class="forma f-arco" style="--c:${i % 2 ? "var(--vermelho)" : "var(--azul-medio)"}" aria-hidden="true"></span>
+        ${p.foto ? `<img src="${esc(p.foto.src)}" alt="${esc(p.foto.alt)}" loading="lazy">` : (P ? `<span class="ph-foto ph">Foto</span>` : "")}</div>
+      <h3>${ph(p.nome, "Nome do Professor(a)")}</h3>
+      <p class="area">${ph(p.areaAtuacao, "Área de atuação")}</p>
+      <p class="disc">${ph(p.disciplina, "Disciplina ministrada")}</p>
+      <p class="bio">${ph(p.miniBio, "Mini biografia")}</p>
+    </article>`;
+  }).join("");
+  if (!profs.length) $("#professores").classList.add("oculto");
+  const ct = C.contato;
+  $("#lista-contatos").innerHTML = `
+    <li><span class="rot">Instagram:</span><span class="val"><a href="${esc(ct.instagram.url)}" target="_blank" rel="noopener noreferrer">${esc(ct.instagram.rotulo)}</a></span></li>
+    <li><span class="rot">Facebook:</span><span class="val">${ct.facebook.url ? `<a href="${esc(ct.facebook.url)}" target="_blank" rel="noopener noreferrer">${esc(ct.facebook.rotulo)}</a>` : esc(ct.facebook.rotulo)}</span></li>
+    <li><span class="rot">E-mail:</span><span class="val"><a href="mailto:${esc(ct.email)}" id="email-txt">${esc(ct.email)}</a><button class="mini" type="button" id="copiar-email">Copiar</button><span class="sr" role="status" aria-live="polite" id="aviso-email"></span></span></li>
+    <li><span class="rot">Endereço:</span><span class="val">${ct.endereco.map(esc).join("<br>")}<br><a href="${esc(ct.mapa)}" target="_blank" rel="noopener noreferrer">Ver no mapa</a></span></li>`;
+
+  /* navegação gerada a partir das seções visíveis */
+  const secoes = [["como-apoiamos","Como apoiamos"],["relatos","Relatos"],["nossa-historia","Nossa História"],["empreendedoras","Empreendedoras"],["professores","Professores"],["envolva-se","Envolva-se"],["contato","Contato"]]
+    .filter(([id]) => !document.getElementById(id).classList.contains("oculto"));
+  const li = data => secoes.map(([id, nome]) => `<li><a href="#${id}" ${data}>${nome}</a></li>`).join("");
+  $("#nav-links").innerHTML = li(""); $("#menu-links").innerHTML = li("data-fecha"); $("#rodape-links").innerHTML = li("");
+
+  /* menu mobile */
+  const menu = $("#menu"), abrir = $("#abrir-menu"), fechar = $("#fechar-menu");
+  const fecharMenu = () => { menu.hidden = true; abrir.setAttribute("aria-expanded","false"); document.body.style.overflow = ""; abrir.focus(); };
+  abrir.addEventListener("click", () => { menu.hidden = false; abrir.setAttribute("aria-expanded","true"); document.body.style.overflow = "hidden"; fechar.focus(); });
+  fechar.addEventListener("click", fecharMenu);
+  menu.addEventListener("click", e => { if (e.target.closest("[data-fecha]")) { menu.hidden = true; abrir.setAttribute("aria-expanded","false"); document.body.style.overflow = ""; } });
+  menu.addEventListener("keydown", e => {
+    if (e.key === "Escape") fecharMenu();
+    if (e.key === "Tab") { const f = [...menu.querySelectorAll("a,button")]; const a = f[0], z = f[f.length-1];
+      if (e.shiftKey && document.activeElement === a) { e.preventDefault(); z.focus(); } else if (!e.shiftKey && document.activeElement === z) { e.preventDefault(); a.focus(); } }
+  });
+
+  /* copiar */
+  const copiar = (texto, aviso, msg, alvoSel) => {
+    const ok = () => { aviso.textContent = msg; clearTimeout(aviso._t); aviso._t = setTimeout(() => aviso.textContent = "", 3000); };
+    const selecionar = () => { const r = document.createRange(); r.selectNodeContents(document.querySelector(alvoSel)); const s = getSelection(); s.removeAllRanges(); s.addRange(r); };
+    try { navigator.clipboard.writeText(texto).then(ok, () => { selecionar(); }); } catch (e) { selecionar(); }
+  };
+  $("#copiar-pix").addEventListener("click", () => copiar(C.doacao.pix, $("#aviso-pix"), "Chave copiada", "#chave-pix"));
+  $("#copiar-email").addEventListener("click", () => copiar(ct.email, $("#aviso-email"), "E-mail copiado", "#email-txt"));
+
+  /* contagem dos indicadores */
+  const reduz = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!reduz) document.querySelectorAll("[data-alvo]").forEach(el => {
+    const alvo = +el.dataset.alvo, t0 = performance.now(), dur = alvo > 10 ? 1400 : 900;
+    const passo = t => { const k = Math.min(1, (t - t0) / dur); el.textContent = Math.round(alvo * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(passo); };
+    requestAnimationFrame(passo);
+  });
+})();
+</script>
