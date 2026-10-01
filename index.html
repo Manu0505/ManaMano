@@ -37,7 +37,7 @@
 }
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth; scroll-padding-top:6.5rem}
-@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *,*::before,*::after{animation:none!important; transition:none!important} }
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
 body{margin:0; background:var(--azul); color:var(--branco); font-family:var(--f-texto); font-size:var(--texto); line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden}
 img{max-width:100%; display:block}
 a{color:inherit}
@@ -194,7 +194,18 @@ p{margin:0}
 
 /* ---------- relatos ---------- */
 .relatos{background:var(--vermelho); --tex-cor:var(--vermelho-vivo)}
-.lista-relatos{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:clamp(1rem, 2vw, 1.5rem)}
+.relatos .filtros button[aria-pressed="true"]{color:var(--vermelho)}
+.relatos-barra{display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:1rem 1.5rem; margin-bottom:1.6rem}
+.relatos-barra .filtros{margin:0}
+.setas{display:flex; gap:.6rem}
+.seta{width:3rem; height:3rem; border-radius:50%; border:2px solid var(--branco); background:transparent; color:var(--branco); display:grid; place-items:center; cursor:pointer; padding:0; transition:background .25s, color .25s, opacity .25s}
+.seta:hover:not([disabled]){background:var(--branco); color:var(--vermelho)}
+.seta[disabled]{opacity:.35; cursor:default}
+.seta svg{width:1.2rem; height:1.2rem; stroke:currentColor; stroke-width:2.2; fill:none; stroke-linecap:round; stroke-linejoin:round}
+.lista-relatos{display:flex; gap:clamp(1rem, 2vw, 1.5rem); overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth; margin-inline:calc(-1*var(--margem)); padding-inline:var(--margem); scroll-padding-inline:var(--margem); padding-bottom:.5rem; scrollbar-width:none}
+.lista-relatos::-webkit-scrollbar{display:none}
+.lista-relatos > *{flex:0 0 clamp(285px, 34vw, 440px); scroll-snap-align:start}
+@media (prefers-reduced-motion: reduce){ .lista-relatos{scroll-behavior:auto} }
 .relato{position:relative; background:var(--branco); color:var(--azul); border-radius:8px; padding:clamp(1.6rem, 3vw, 2.4rem); display:flex; flex-direction:column; gap:1.25rem; min-width:0; margin:0}
 .relato .aspas{font-family:var(--f-titulo); font-size:5.5rem; line-height:.7; color:var(--rosa); height:2.6rem}
 .relato blockquote{margin:0; font-size:clamp(1.12rem, 1.6vw, 1.3rem); line-height:1.5}
@@ -218,8 +229,11 @@ p{margin:0}
 @media (max-width:860px){ .historia-grade{grid-template-columns:1fr} .ano .ano-num{font-size:clamp(6rem, 34vw, 10rem)} }
 
 /* ---------- parceiros (módulo opcional) ---------- */
-.parceiros{background:var(--azul); padding-block:clamp(3rem, 6vw, 4.5rem)}
-.parceiros ul{list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:1.5rem 3rem; align-items:center}
+.parceiros{position:relative; background:var(--azul-noite); padding-block:clamp(3.2rem, 6vw, 4.8rem)}
+.parceiros h2{font-family:var(--f-texto); font-size:.85rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--rosa); margin-bottom:1.4rem}
+.parceiros ul{list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:.9rem 1.6rem; align-items:center}
+.parceiros li{display:inline-flex; align-items:center; gap:1.6rem; font-family:var(--f-titulo); font-size:clamp(1.45rem, 2.6vw, 2.2rem); line-height:1.1}
+.parceiros li + li::before{content:""; width:.55em; aspect-ratio:1; background:var(--rosa); -webkit-mask:url(assets/estrela.png) center/contain no-repeat; mask:url(assets/estrela.png) center/contain no-repeat}
 
 /* ---------- empreendedoras ---------- */
 .empreendedoras{background:var(--azul); --tex-cor:var(--azul-vivo)}
@@ -228,7 +242,9 @@ p{margin:0}
 .emp-midia{position:relative; aspect-ratio:4/3.4; display:grid; place-items:end center; overflow:hidden; background:var(--azul-medio)}
 .emp-midia .forma{position:absolute; width:72%; bottom:-6%; left:14%}
 .emp-midia img{position:relative; z-index:1; width:78%; filter:url(#contorno-branco)}
-.emp-midia .ph-foto{position:absolute; inset:auto 0 1rem 0; text-align:center; z-index:2; font-size:var(--legenda); color:var(--branco)}
+.iniciais{position:absolute; left:0; right:0; z-index:2; text-align:center; font-family:var(--f-titulo); line-height:1; letter-spacing:.02em; pointer-events:none}
+.emp-midia .iniciais{bottom:22%; font-size:clamp(3rem, 6vw, 4.6rem)}
+.emp .turma{font-size:.78rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--rosa)}
 .emp-corpo{padding:1.5rem clamp(1.25rem, 2vw, 1.6rem) 1.7rem; display:flex; flex-direction:column; gap:.85rem; flex:1}
 .emp h3{font-size:clamp(1.6rem, 2.4vw, 2rem)}
 .emp .quem{font-size:1rem; color:var(--azul-claro)}
@@ -238,6 +254,8 @@ p{margin:0}
 .emp .rede svg{width:1rem; height:1rem; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round}
 .filtros{display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:1.5rem}
 .filtros button{--ib:var(--branco)}
+.filtros .btn{min-height:2.5rem; padding:.45rem 1.05rem; font-size:.88rem; flex:none}
+@media (max-width:860px){ .filtros{flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none; margin-inline:calc(-1*var(--margem)); padding-inline:var(--margem); padding-block:.15rem} .filtros::-webkit-scrollbar{display:none} .relatos-barra .filtros{margin-inline:calc(-1*var(--margem))} .relatos-barra{display:block} }
 .filtros button[aria-pressed="true"]{background:var(--branco); color:var(--azul)}
 .dica-deslizar{display:none; align-items:center; gap:.75rem; justify-content:flex-end; margin-top:1.1rem; font-size:var(--legenda)}
 @media (max-width:860px){
@@ -245,25 +263,24 @@ p{margin:0}
   .trilho::-webkit-scrollbar{display:none}
   .trilho > *{flex:0 0 min(82%, 340px); scroll-snap-align:start}
   .dica-deslizar.ativa{display:flex}
-  .lista-relatos{display:flex; overflow-x:auto; scroll-snap-type:x mandatory; gap:1rem; margin-inline:calc(-1*var(--margem)); padding-inline:var(--margem); scroll-padding-inline:var(--margem); scrollbar-width:none}
-  .lista-relatos::-webkit-scrollbar{display:none}
-  .lista-relatos > *{flex:0 0 min(86%, 380px); scroll-snap-align:start}
+  .lista-relatos > *{flex-basis:min(86%, 380px)}
+  .setas{display:none}
 }
 
 /* ---------- professores ---------- */
 .professores{background:var(--azul-claro); color:var(--azul)}
-.grade-prof{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:clamp(1.25rem, 2.5vw, 2rem)}
+.grade-prof{display:grid; grid-template-columns:repeat(auto-fill, minmax(min(100%, 210px), 270px)); gap:clamp(1.25rem, 2.5vw, 2rem)}
 .prof{position:relative; display:flex; flex-direction:column; gap:.6rem; min-width:0}
 .prof-foto{position:relative; aspect-ratio:500/606; margin-bottom:.7rem}
 .prof-foto .forma{position:absolute; inset:0; width:100%}
 .prof-foto img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:grayscale(1) contrast(1.15); -webkit-mask:url(assets/arco.png) center/contain no-repeat; mask:url(assets/arco.png) center/contain no-repeat}
-.prof-foto .ph-foto{position:absolute; inset:auto 0 1.2rem 0; text-align:center; color:var(--branco); font-size:var(--legenda)}
+.prof-foto .iniciais{bottom:30%; font-size:clamp(2.6rem, 5vw, 4rem); color:var(--branco)}
 .prof h3{font-size:clamp(1.45rem, 2vw, 1.75rem)}
 .prof .area{font-size:.95rem}
 .prof .disc{color:var(--vermelho); font-weight:700; font-size:.95rem}
 .prof .bio{font-size:.98rem; line-height:1.55}
 .prof .selo{top:.7rem; right:.7rem}
-@media (max-width:960px){ .grade-prof{grid-template-columns:repeat(2, minmax(0,1fr))} }
+@media (max-width:600px){ .grade-prof{grid-template-columns:repeat(2, minmax(0,1fr))} }
 @media (max-width:440px){ .grade-prof{gap:1.5rem 1rem} .prof h3{font-size:1.3rem} .prof .bio,.prof .area,.prof .disc{font-size:.9rem} }
 
 /* ---------- envolva-se ---------- */
@@ -442,6 +459,23 @@ html.mov .infobar .ib-heart svg{animation:batida 3.4s ease-in-out 2.4s infinite}
 @keyframes grao{0%{-webkit-mask-position:0 0; mask-position:0 0} 33%{-webkit-mask-position:-47px 81px; mask-position:-47px 81px} 66%{-webkit-mask-position:73px -29px; mask-position:73px -29px}}
 html.mov .tex-granulada::before{animation:grao 1.1s steps(1) infinite}
 
+/* versão suave: quem pediu menos movimento no aparelho vê revelações por luz e cor,
+   sem deslocamentos, giros, parallax ou fitas correndo */
+@keyframes aparecer{from{opacity:0}}
+@keyframes esmaecer{to{opacity:0; visibility:hidden}}
+html.suave .selo-hero, html.suave .selo-hero.flutua, html.suave .selo-hero.gira{animation:aparecer 1.1s var(--ease-suave) calc(var(--t0) + var(--i,0) * .12s) backwards}
+html.suave .secao:not(.visto) .selo-ver{scale:1; opacity:0}
+html.suave .secao.visto .selo-ver{animation:aparecer 1s var(--ease-suave) calc(.2s + var(--i,0) * .1s) backwards}
+html.suave .secao:not(.visto) .sobe{translate:none}
+html.suave .secao:not(.visto) .palavra{translate:none}
+html.suave .palavra{transition:color 1.4s var(--ease-suave) calc(var(--w) * 55ms + .1s)}
+html.suave .hero .palavra{transition-delay:calc(var(--t0) + var(--w) * 70ms)}
+html.suave .ondas-svg .linha, html.suave .tex-granulada::before, html.suave .infobar .ib-heart svg, html.suave .mao, html.suave .gira{animation:none}
+html.suave .inclina{transform:none}
+html.suave.com-abertura .abertura{animation-name:esmaecer}
+html.suave .ab-logo{animation-name:esmaecer}
+html.suave .ab-logo .marca-v, html.suave .contato.visto .logo-enso .marca-v{animation-name:aparecer}
+
 /* corações do Pix */
 .coracao-voa{position:fixed; z-index:120; width:22px; height:22px; pointer-events:none; color:var(--rosa)}
 .coracao-voa svg{width:100%; height:100%; fill:currentColor}
@@ -540,7 +574,11 @@ html.parado *, html.parado *::before, html.parado *::after{animation-play-state:
   <section class="secao relatos tex tex-fluida" id="relatos" aria-labelledby="t-relatos">
     <div class="wrap">
       <div class="titulo-secao"><h2 id="t-relatos">Relatos</h2></div>
-      <div class="lista-relatos" id="lista-relatos"></div>
+      <div class="relatos-barra">
+        <div class="filtros" id="filtros-relatos" role="group" aria-label="Filtrar relatos"></div>
+        <div class="setas"><button class="seta" type="button" id="rel-ant" aria-label="Relatos anteriores"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><button class="seta" type="button" id="rel-prox" aria-label="Próximos relatos"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div>
+      </div>
+      <div class="lista-relatos" id="lista-relatos" tabindex="0" aria-label="Relatos"></div>
       <div class="dica-deslizar" id="dica-relatos" aria-hidden="true"><span class="mao" style="--ib:var(--rosa)"></span></div>
     </div>
   </section>
@@ -555,8 +593,8 @@ html.parado *, html.parado *::before, html.parado *::after{animation-play-state:
     </div>
   </section>
 
-  <section class="parceiros oculto" id="parceiros" aria-labelledby="t-parceiros">
-    <div class="wrap"><h2 id="t-parceiros" class="sr">Organizações parceiras</h2><ul id="lista-parceiros"></ul></div>
+  <section class="parceiros oculto selo-topo" style="--cor-acima:var(--rosa-claro)" id="parceiros" aria-labelledby="t-parceiros">
+    <div class="wrap"><h2 id="t-parceiros">Organizações parceiras</h2><ul id="lista-parceiros"></ul></div>
   </section>
 
   <section class="secao empreendedoras tex tex-granulada" id="empreendedoras" aria-labelledby="t-emp">
@@ -677,13 +715,42 @@ const CONTEUDO = {
     ]
   },
 
+  /* Relatos: trechos de vídeos gravados com as pessoas, com ajustes leves de oralidade.
+     voz: "empreendedora", "professora", "parceira" ou "extensionista" (vira filtro no site). */
   relatos: [
-    { id: "r1", publicado: false, aguardandoAutorizacao: true,
-      texto: "Quero dizer a vocês que estou muito satisfeita com a minha logomarca. Eu e minhas sócias estamos muito felizes pelo trabalho que vocês fizeram. Vocês atingiram além das nossas expectativas.",
+    { id: "r-eliana", publicado: true, voz: "empreendedora",
+      texto: "Quando conheci o ManaMano, aprendi muita coisa, inclusive a precificar e a anotar quanto eu gasto e quanto fica para mim. Eu não fazia nada disso. E aprendi que eu sou mulher, que eu posso e que sou capaz de ir além do que imaginava. Hoje me sinto poderosa, capaz e muito feliz.",
+      nome: "Eliana Francisca", papel: "Empreendedora da turma de 2025" },
+    { id: "r-marisol", publicado: true, voz: "professora",
+      texto: "O ManaMano é voltado para mulheres que muitas vezes são o suporte principal das famílias. É muito importante que elas tenham suporte, já que elas são suporte para muita gente. E ele não é só um curso. O ManaMano é uma rede, porque as empreendedoras permanecem ligadas a ela depois de formadas.",
+      nome: "Marisol Goya", papel: "Professora de Administração da UFRJ" },
+    { id: "r-daisy", publicado: true, voz: "parceira",
+      texto: "Além da capacitação, o ManaMano é um instrumento que viabiliza o diálogo entre a universidade e as periferias da região metropolitana. Um projeto a serviço da construção de um mundo mais inclusivo, sem preconceito e de paz.",
+      nome: "Daisy Valença", papel: "Secretária executiva da Asplande" },
+    { id: "r-isabela", publicado: true, voz: "extensionista",
+      texto: "Foi muito bom ter um contato mais próximo com o sonho delas e perceber que estamos fazendo diferença nesse sonho. É isso que fazemos no ManaMano. Ajudamos a transformar expectativas em realidade.",
+      nome: "Isabela", papel: "Extensionista, líder de copy e planejamento" },
+    { id: "r-jocelene", publicado: true, voz: "empreendedora",
+      texto: "A gente chega com uma expectativa e sai com respostas muito maiores do que esperava. No final, a gente entende que uma cuidou da outra e que crescemos muito juntas. Eu entrei com uma pequena mochila e saí com uma mala gigante de experiências.",
+      nome: "Jocelene", papel: "Empreendedora da turma de 2025" },
+    { id: "r-maribel", publicado: true, voz: "professora",
+      texto: "É muito gostoso ver a força dessa rede de mulheres que, depois de formadas, continuam ligadas ao projeto e colaboram com a formação das outras. A gente partilha os saberes, os lanches e todas as atividades, pensando os problemas concretos das empreendedoras a partir da experiência delas.",
+      nome: "Maribel Soares", papel: "Professora coordenadora do ManaMano" },
+    { id: "r-neide", publicado: true, voz: "parceira",
+      texto: "Depois que passam pelo ManaMano, as mulheres afloram, nos negócios e nas redes sociais. Elas sabem gerar renda e sabem trabalhar, mas não tinham acesso a algumas informações que vão aprendendo no ManaMano.",
+      nome: "Neide", papel: "Geração de renda, Instituto Dara" },
+    { id: "r-ana", publicado: true, voz: "extensionista",
+      texto: "A oportunidade de aparecer e de mostrar o trabalho que elas fazem é um diferencial muito grande. Ninguém faz nada sozinho. Assim como existe troca entre as empreendedoras, a equipe de comunicação também vive essa troca.",
+      nome: "Ana", papel: "Extensionista, líder de redes sociais" },
+    { id: "r-cristiane", publicado: true, voz: "empreendedora",
+      texto: "O ManaMano me proporcionou colocar a minha identidade na minha marca, com as cores que eu achava que combinavam com os meus produtos. Estou muito feliz e muito realizada.",
+      nome: "Cristiane dos Santos", papel: "Empreendedora da turma de 2025" },
+    { id: "r-mariahelena", publicado: true, voz: "empreendedora",
+      texto: "Estou muito satisfeita com a minha logomarca. Eu e minhas sócias estamos muito felizes pelo trabalho que vocês fizeram. Vocês foram além das nossas expectativas.",
       nome: "Maria Helena", papel: "Empreendedora da turma de 2025" },
-    { id: "r2", publicado: false, texto: "", nome: "", papel: "Professora de Formação de Custos" },
-    { id: "r3", publicado: false, texto: "", nome: "", papel: "Extensionista de Comunicação" },
-    { id: "r4", publicado: false, texto: "", nome: "", papel: "Representante de Organização Parceira" }
+    { id: "r-leticia", publicado: false, voz: "professora", // confirmar o sobrenome antes de publicar
+      texto: "Tive a oportunidade de mediar rodas de conversa com essas mulheres potentes, que ensinam umas às outras e me ensinaram muito. Eu participo de vários grupos, mas o ManaMano é de fato uma rede, onde aprendemos umas com as outras e ouvimos nossas dores, alegrias, sucessos e frustrações.",
+      nome: "Letícia", papel: "Professora do Instituto COPPEAD de Administração da UFRJ" }
   ],
 
   historia: {
@@ -694,22 +761,57 @@ const CONTEUDO = {
     ]
   },
 
-  parceiros: { ativo: false, lista: [] }, // ex.: { nome: "Criola", logo: "assets/parceiros/criola.png", url: "https://..." }
+  parceiros: {
+    ativo: true,
+    lista: [ // nomes confirmados pelo material da turma de 2025; logos e links podem entrar depois
+      { nome: "Asplande" }, { nome: "Criola" }, { nome: "Instituto Dara" }, { nome: "Gastromotiva" }, { nome: "Rede Asta" }
+    ]
+  },
 
   empreendedorasIntro: "Conheça algumas das mulheres que fazem parte da rede ManaMano.",
+  /* Turma de 2025. Descrições escritas a partir dos vídeos de apresentação de cada uma.
+     Onde a grafia da marca não ficou clara no vídeo, o nome do negócio está vazio e o card
+     mostra o nome da empreendedora (veja os comentários "confirmar"). */
   empreendedoras: [
-    { id: "e1", publicado: false, nomeNegocio: "", empreendedora: "", areaAtuacao: "", descricao: "", redeSocial: null, foto: null, turma: "" },
-    { id: "e2", publicado: false, nomeNegocio: "", empreendedora: "", areaAtuacao: "", descricao: "", redeSocial: null, foto: null, turma: "" },
-    { id: "e3", publicado: false, nomeNegocio: "", empreendedora: "", areaAtuacao: "", descricao: "", redeSocial: null, foto: null, turma: "" }
+    { id: "e-aline-maia", publicado: true, turma: "2025", nomeNegocio: "Aline Maia Festas", empreendedora: "Aline da Silva Maia", areaAtuacao: "Festas e eventos",
+      descricao: "Buffet completo e decoração para festas infantis e adultas, com uma equipe de serviço formada por jovens da comunidade e encomendas que movimentam outras fornecedoras locais.", redeSocial: null, foto: null },
+    { id: "e-luana", publicado: true, turma: "2025", nomeNegocio: "Delícias da Lua", empreendedora: "Luana Vieira de Andrade", areaAtuacao: "Alimentação",
+      descricao: "Salgaderia e doceria artesanal e sustentável, com ingredientes locais e aproveitamento integral dos alimentos. Atende por encomenda, delivery e pronta entrega desde 2014.", redeSocial: null, foto: null },
+    { id: "e-edna", publicado: true, turma: "2025", nomeNegocio: "Feito Por Nós", empreendedora: "Edna da Costa", areaAtuacao: "Moda e acessórios",
+      descricao: "Bolsas e acessórios feitos com o reaproveitamento de banners e tecidos, em produção própria desde 2012 e vendidos em feiras.", redeSocial: null, foto: null },
+    { id: "e-hadassa", publicado: true, turma: "2025", nomeNegocio: "Vida Alternativa", empreendedora: "Hadassa de Azevedo", areaAtuacao: "Artesanato",
+      descricao: "Impressões de flores e folhas do próprio cultivo em cerâmica fria, que viram brincos, pingentes e peças de decoração.", redeSocial: null, foto: null },
+    { id: "e-jocelene", publicado: true, turma: "2025", nomeNegocio: "", empreendedora: "Jocelene", areaAtuacao: "Moda e acessórios", // confirmar: marca "Imagináfrica" e sobrenome
+      descricao: "Moda inspirada na estética afro-brasileira, que celebra as diásporas africanas com modelagens para todos os corpos e estampas que contam histórias.", redeSocial: null, foto: null },
+    { id: "e-eliana", publicado: true, turma: "2025", nomeNegocio: "", empreendedora: "Eliana Francisca", areaAtuacao: "Artesanato", // confirmar: marca "Francis Arte"
+      descricao: "Tapetes coloridos na técnica do frufru, antiderrapantes e laváveis na máquina, além de jogos de banheiro, de cozinha e almofadas.", redeSocial: null, foto: null },
+    { id: "e-cristiane", publicado: true, turma: "2025", nomeNegocio: "", empreendedora: "Cristiane dos Santos", areaAtuacao: "Artesanato", // confirmar: nome da marca
+      descricao: "Acessórios infantis, femininos e para pets. A peça principal é a tiara de macramê com fio de malha reaproveitado, e os laços usam retalhos de tecido.", redeSocial: null, foto: null },
+    { id: "e-aline-tota", publicado: true, turma: "2025", nomeNegocio: "", empreendedora: "Aline Tota", areaAtuacao: "Alimentação", // confirmar: marca "Totas"
+      descricao: "Delivery de batata recheada com estrogonofe de frango, de camarão e à bolonhesa, preparada na cozinha de casa com a ajuda da família. Nasceu na pandemia, depois de anos na confeitaria.", redeSocial: null, foto: null },
+    { id: "e-regina", publicado: true, turma: "2025", nomeNegocio: "", empreendedora: "Maria Regina Fontes", areaAtuacao: "Artesanato", // confirmar: marca "Criativo EcoArte"
+      descricao: "Artesã há mais de quatro décadas, premiada pela criação e pela inovação. No seu ateliê, transforma a própria história em arte.", redeSocial: null, foto: null },
+    { id: "e-vanessa", publicado: true, turma: "2025", nomeNegocio: "", empreendedora: "Vanessa Soares", areaAtuacao: "Confeitaria",
+      descricao: "Confeiteira há cerca de oito anos, formada pelo Senac. A especialidade são os bolos decorados, e a produção está crescendo para os doces de delivery.", redeSocial: null, foto: null },
+    { id: "e-francisca", publicado: true, turma: "2025", nomeNegocio: "", empreendedora: "Francisca Francismar", areaAtuacao: "Confeitaria",
+      descricao: "Doces de vitrine, como bolo de pote, pavê, pudim e brigadeiro.", redeSocial: null, foto: null },
+    { id: "e-maria-helena", publicado: true, turma: "2025", nomeNegocio: "", empreendedora: "Maria Helena Martins", areaAtuacao: "Artesanato",
+      descricao: "Customização artesanal de chinelos, vendidos em feiras de artesanato.", redeSocial: null, foto: null },
+    { id: "e-marta", publicado: true, turma: "2025", nomeNegocio: "", empreendedora: "Marta Maria", areaAtuacao: "Artesanato",
+      descricao: "Arte sacra em gesso, resina e MDF, para decorar, presentear e evangelizar.", redeSocial: null, foto: null },
+    { id: "e-nadia", publicado: true, turma: "2025", nomeNegocio: "", empreendedora: "Nádia dos Santos", areaAtuacao: "Alimentação",
+      descricao: "Quentinhas e salgados feitos com a experiência de quem sempre trabalhou na cozinha. Também é cofundadora do coletivo Mulheres Movimentando Território.", redeSocial: null, foto: null }
     // redeSocial: { rotulo: "@nomedonegocio", url: "https://www.instagram.com/nomedonegocio/" }
     // foto: { src: "assets/fotos/nome.png", alt: "Descrição da foto" }
   ],
 
   professores: [
-    { id: "p1", publicado: false, nome: "", areaAtuacao: "", disciplina: "", miniBio: "", foto: null },
-    { id: "p2", publicado: false, nome: "", areaAtuacao: "", disciplina: "", miniBio: "", foto: null },
-    { id: "p3", publicado: false, nome: "", areaAtuacao: "", disciplina: "", miniBio: "", foto: null },
-    { id: "p4", publicado: false, nome: "", areaAtuacao: "", disciplina: "", miniBio: "", foto: null }
+    { id: "p-marisol", publicado: true, nome: "Marisol Goya", areaAtuacao: "Administração, UFRJ", disciplina: "Posicionamento",
+      miniBio: "Participa do ManaMano desde a segunda turma. Ministra a aula de posicionamento e colabora na formação das extensionistas, principalmente em gestão.", foto: null },
+    { id: "p-maribel", publicado: true, nome: "Maribel Soares", areaAtuacao: "Coordenação do ManaMano", disciplina: "Metodologia de trabalho em rede",
+      miniBio: "Uma das professoras coordenadoras do projeto. Acompanha a evolução do ManaMano e da metodologia construída a partir da experiência das empreendedoras.", foto: null },
+    { id: "p-leticia", publicado: false, nome: "Letícia", areaAtuacao: "Instituto COPPEAD de Administração, UFRJ", disciplina: "Rodas de conversa", // confirmar o sobrenome
+      miniBio: "Participa do ManaMano há alguns anos, primeiro como palestrante e professora. Em 2025, mediou as rodas de conversa com as empreendedoras.", foto: null }
   ],
 
   extensionista: [
@@ -772,7 +874,9 @@ const CONTEUDO = {
 
   /* relatos */
   const relatos = C.relatos.filter(r => (r.publicado && r.texto) || P);
-  $("#lista-relatos").innerHTML = relatos.map(r => {
+  const vozes = { empreendedora: "Empreendedoras", professora: "Professoras", parceira: "Parceiras", extensionista: "Extensionistas" };
+  const listaRel = $("#lista-relatos");
+  const cardRel = r => {
     const vazio = !r.texto;
     const selo = !r.publicado ? `<span class="selo">${r.aguardandoAutorizacao ? "Aguardando autorização" : "Exemplo"}</span>` : "";
     return `<figure class="relato ${vazio ? "vazio" : ""}">${selo}
@@ -780,28 +884,50 @@ const CONTEUDO = {
       <blockquote>${vazio ? `<p class="ph">Depoimento a ser inserido.</p>` : `<p>${esc(r.texto)}</p>`}</blockquote>
       <figcaption><span class="nome ${r.nome ? "" : "ph"}">${esc(r.nome || "Nome")}</span><span class="papel">${esc(r.papel)}</span></figcaption>
     </figure>`;
-  }).join("");
+  };
+  const setasRel = () => { const max = listaRel.scrollWidth - listaRel.clientWidth - 4;
+    $("#rel-ant").disabled = listaRel.scrollLeft <= 4; $("#rel-prox").disabled = listaRel.scrollLeft >= max; };
+  const desenhaRel = voz => { listaRel.innerHTML = relatos.filter(r => !voz || r.voz === voz).map(cardRel).join(""); listaRel.scrollLeft = 0; requestAnimationFrame(setasRel); };
+  desenhaRel();
+  const vozesPresentes = Object.keys(vozes).filter(v => relatos.some(r => r.voz === v));
+  if (vozesPresentes.length > 1) {
+    const fr = $("#filtros-relatos");
+    fr.innerHTML = [`<button class="btn btn-secundario" type="button" aria-pressed="true" data-voz="">Todos</button>`, ...vozesPresentes.map(v => `<button class="btn btn-secundario" type="button" aria-pressed="false" data-voz="${v}">${vozes[v]}</button>`)].join("");
+    fr.addEventListener("click", ev => { const bt = ev.target.closest("button"); if (!bt) return;
+      fr.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === bt)); desenhaRel(bt.dataset.voz); });
+  }
+  const passoRel = () => { const c = listaRel.firstElementChild; return c ? c.offsetWidth + parseFloat(getComputedStyle(listaRel).columnGap || 16) : 300; };
+  $("#rel-ant").addEventListener("click", () => listaRel.scrollBy({ left: -passoRel() }));
+  $("#rel-prox").addEventListener("click", () => listaRel.scrollBy({ left: passoRel() }));
+  listaRel.addEventListener("scroll", () => requestAnimationFrame(setasRel), { passive: true });
+  addEventListener("resize", setasRel);
   if (!relatos.length) $("#relatos").classList.add("oculto");
 
   /* parceiros */
   if (C.parceiros.ativo && C.parceiros.lista.length) {
     $("#parceiros").classList.remove("oculto");
-    $("#lista-parceiros").innerHTML = C.parceiros.lista.map(p => `<li><a href="${esc(p.url)}" target="_blank" rel="noopener noreferrer"><img src="${esc(p.logo)}" alt="${esc(p.nome)}" style="height:48px;width:auto"></a></li>`).join("");
+    $("#lista-parceiros").innerHTML = C.parceiros.lista.map(p => {
+      const nome = p.logo ? `<img src="${esc(p.logo)}" alt="${esc(p.nome)}" style="height:48px;width:auto">` : esc(p.nome);
+      return `<li>${p.url ? `<a href="${esc(p.url)}" target="_blank" rel="noopener noreferrer" style="text-decoration:none">${nome}</a>` : nome}</li>`;
+    }).join("");
   }
 
   /* empreendedoras */
   const emps = C.empreendedoras.filter(e => e.publicado || P);
+  const iniciais = n => { const w = String(n || "").trim().split(/\s+/).filter(Boolean); return w.length ? (w[0][0] + (w.length > 1 ? w[w.length - 1][0] : "")).toUpperCase() : ""; };
+  const corIni = ["var(--azul-noite)", "var(--azul-noite)", "var(--branco)", "var(--azul-noite)"];
   const cardEmp = (e, i) => {
     const f = formas[i % 4], cor = coresForma[i % 4];
     const ph = (v, rot) => v ? esc(v) : `<span class="ph">${rot}</span>`;
     return `<article class="emp" data-area="${esc(e.areaAtuacao)}">
       ${!e.publicado ? `<span class="selo">Exemplo</span>` : ""}
       <div class="emp-midia"><span class="forma ${f}" style="--c:${cor}" aria-hidden="true"></span>
-        ${e.foto ? `<img src="${esc(e.foto.src)}" alt="${esc(e.foto.alt)}" loading="lazy">` : (P ? `<span class="ph-foto ph">Foto</span>` : "")}
+        ${e.foto ? `<img src="${esc(e.foto.src)}" alt="${esc(e.foto.alt)}" loading="lazy">` : (e.empreendedora ? `<span class="iniciais" aria-hidden="true" style="color:${corIni[i % 4]}">${esc(iniciais(e.empreendedora))}</span>` : "")}
       </div>
       <div class="emp-corpo">
-        <h3>${ph(e.nomeNegocio, "Nome do negócio")}</h3>
-        <p class="quem">${ph(e.empreendedora, "Empreendedora")}</p>
+        ${e.turma ? `<span class="turma">Turma de ${esc(e.turma)}</span>` : ""}
+        <h3>${ph(e.nomeNegocio || e.empreendedora, "Nome do negócio")}</h3>
+        ${e.nomeNegocio || !e.empreendedora ? `<p class="quem">${ph(e.empreendedora, "Empreendedora")}</p>` : ""}
         <span class="etiqueta">${ph(e.areaAtuacao, "Área de atuação")}</span>
         <p class="desc">${ph(e.descricao, "Descrição do negócio")}</p>
         ${e.redeSocial?.url ? `<a class="rede" href="${esc(e.redeSocial.url)}" target="_blank" rel="noopener noreferrer">${esc(e.redeSocial.rotulo)} ${ext}</a>` : (P ? `<span class="rede ph">Rede social</span>` : "")}
@@ -813,9 +939,9 @@ const CONTEUDO = {
   desenhaEmp();
   if (emps.length > 1) $("#dica-emp").classList.add("ativa");
   const areas = [...new Set(emps.filter(e => e.publicado && e.areaAtuacao).map(e => e.areaAtuacao))];
-  if (emps.filter(e => e.publicado).length > 9 && areas.length > 1) {
+  if (emps.filter(e => e.publicado).length > 6 && areas.length > 1) {
     const fl = $("#filtros"); fl.classList.remove("oculto");
-    fl.innerHTML = [`<button class="btn btn-secundario" aria-pressed="true" data-area="">Todas</button>`, ...areas.map(a => `<button class="btn btn-secundario" aria-pressed="false" data-area="${esc(a)}">${esc(a)}</button>`)].join("");
+    fl.innerHTML = [`<button class="btn btn-secundario" type="button" aria-pressed="true" data-area="">Todas</button>`, ...areas.map(a => `<button class="btn btn-secundario" type="button" aria-pressed="false" data-area="${esc(a)}">${esc(a)}</button>`)].join("");
     fl.addEventListener("click", ev => { const b = ev.target.closest("button"); if (!b) return;
       fl.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b)); desenhaEmp(b.dataset.area); });
   }
@@ -828,7 +954,7 @@ const CONTEUDO = {
     return `<article class="prof">
       ${!p.publicado ? `<span class="selo">Exemplo</span>` : ""}
       <div class="prof-foto"><span class="forma f-arco" style="--c:${i % 2 ? "var(--vermelho)" : "var(--azul-medio)"}" aria-hidden="true"></span>
-        ${p.foto ? `<img src="${esc(p.foto.src)}" alt="${esc(p.foto.alt)}" loading="lazy">` : (P ? `<span class="ph-foto ph">Foto</span>` : "")}</div>
+        ${p.foto ? `<img src="${esc(p.foto.src)}" alt="${esc(p.foto.alt)}" loading="lazy">` : (p.nome ? `<span class="iniciais" aria-hidden="true">${esc(iniciais(p.nome))}</span>` : "")}</div>
       <h3>${ph(p.nome, "Nome do Professor(a)")}</h3>
       <p class="area">${ph(p.areaAtuacao, "Área de atuação")}</p>
       <p class="disc">${ph(p.disciplina, "Disciplina ministrada")}</p>
@@ -903,8 +1029,10 @@ const CONTEUDO = {
     t.innerHTML = `<span class="fita-set">${itens.map(i => `<span class="fita-item">${esc(i)}${coracao}</span>`).join("")}</span>`;
   });
 
-  if (reduz) return;
-  raiz.classList.add("mov", "iniciando");
+  let suave = reduz;
+  try { if (sessionStorage.getItem("mm-movimento") === "completo") suave = false; } catch (e) {}
+  const ehSuave = () => raiz.classList.contains("suave");
+  raiz.classList.add("mov", "iniciando"); if (suave) raiz.classList.add("suave");
 
   /* títulos em palavras, com texto inteiro preservado para leitores de tela */
   $$("main h1, main h2").forEach(h => {
@@ -980,14 +1108,21 @@ const CONTEUDO = {
 
   /* pausa geral */
   const bt = $("#pausar");
-  bt.addEventListener("click", () => { const p = raiz.classList.toggle("parado"); bt.setAttribute("aria-pressed", p); $("#pausar-txt").textContent = p ? "Retomar animações" : "Pausar animações"; });
+  const rotuloBt = () => { const s = ehSuave(), p = raiz.classList.contains("parado");
+    bt.setAttribute("aria-pressed", s || p); $("#pausar-txt").textContent = s ? "Ativar todas as animações" : p ? "Retomar animações" : "Pausar animações"; bt.title = $("#pausar-txt").textContent; };
+  bt.addEventListener("click", () => {
+    if (ehSuave()) { raiz.classList.remove("suave"); try { sessionStorage.setItem("mm-movimento", "completo"); } catch (e) {} }
+    else raiz.classList.toggle("parado");
+    rotuloBt();
+  });
+  rotuloBt();
 
   /* rolagem: cápsula compacta, profundidade das texturas, impulso das fitas */
   const topo = $(".topo"); let ultY = scrollY, impulso = 0, dir = 1, agendado = false;
   const texturas = $$(".tex-abstrata.secao, .tex-fluida.secao");
   const aoRolar = () => { agendado = false;
     topo.classList.toggle("compacto", scrollY > 40);
-    if (raiz.classList.contains("parado")) return;
+    if (raiz.classList.contains("parado") || ehSuave()) return;
     texturas.forEach(s => { if (s.classList.contains("fora")) return; s.style.setProperty("--py", (s.getBoundingClientRect().top * -0.14).toFixed(1) + "px"); });
   };
   addEventListener("scroll", () => { const y = scrollY, d = y - ultY; if (d) dir = d > 0 ? 1 : -1; impulso = Math.min(9, impulso + Math.abs(d) * 0.035); ultY = y;
@@ -1003,7 +1138,7 @@ const CONTEUDO = {
   let antes = performance.now();
   const laco = agora => {
     const dt = Math.min(0.05, (agora - antes) / 1000); antes = agora;
-    const parado = raiz.classList.contains("parado");
+    const parado = raiz.classList.contains("parado") || ehSuave();
     if (!parado && !blocoFitas.classList.contains("fora") && !sobreFitas) {
       fitas.forEach(f => { f.x -= (55 + impulso * 45) * dt * dir * f.sentido;
         if (f.x <= -f.w) f.x += f.w; if (f.x > 0) f.x -= f.w;
@@ -1020,7 +1155,7 @@ const CONTEUDO = {
 
   /* cartões inclinam seguindo o ponteiro */
   if (fino) $$(".inclina").forEach(c => {
-    c.addEventListener("pointermove", e => { const r = c.getBoundingClientRect(); c.classList.add("inclinando");
+    c.addEventListener("pointermove", e => { if (ehSuave()) return; const r = c.getBoundingClientRect(); c.classList.add("inclinando");
       c.style.setProperty("--ry", (((e.clientX - r.left) / r.width - .5) * 7).toFixed(2) + "deg");
       c.style.setProperty("--rx", (((e.clientY - r.top) / r.height - .5) * -7).toFixed(2) + "deg"); });
     c.addEventListener("pointerleave", () => { c.classList.remove("inclinando"); c.style.setProperty("--rx", "0deg"); c.style.setProperty("--ry", "0deg"); });
@@ -1031,7 +1166,7 @@ const CONTEUDO = {
 
   /* Pix copiado: corações da rede saem do botão */
   document.addEventListener("copiado", e => {
-    if (e.detail !== "#chave-pix") return;
+    if (e.detail !== "#chave-pix" || ehSuave()) return;
     const r = $("#copiar-pix").getBoundingClientRect();
     for (let k = 0; k < 9; k++) {
       const c = document.createElement("span"); c.className = "coracao-voa"; c.innerHTML = coracao;

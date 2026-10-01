@@ -27,7 +27,15 @@ Identidade visual: LUPA. Publicado pela Vercel a cada alteração na branch `mai
 
 `modoPrevia: false` é a versão pública. Mudar para `true` mostra os itens de exemplo com selo, útil apenas para revisão interna.
 
+## Relatos
+
+Cada relato tem `voz` (`empreendedora`, `professora`, `parceira` ou `extensionista`), que vira filtro no site.
+Os textos vêm dos vídeos gravados na formatura de 2025, com ajustes leves de oralidade.
+
 ## Pendências
+
+- Confirmar a grafia das marcas marcadas com `// confirmar` no `index.html` (Imagináfrica, Francis Arte, Totas, Criativo EcoArte e a marca da Cristiane).
+- Confirmar o sobrenome da professora Letícia (COPPEAD) para publicar o relato e o card dela.
 
 - Link da página do Facebook (`contato.facebook.url`).
 - Nome correto da disciplina "Formação de Custos".
