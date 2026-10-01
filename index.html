@@ -1,3 +1,8 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Fundo ManaMano</title>
 <meta name="description" content="O Fundo ManaMano é um projeto de extensão da Universidade Federal do Rio de Janeiro (UFRJ) que fortalece mulheres empreendedoras da periferia por meio de formação, acompanhamento e apoio financeiro.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -81,13 +86,13 @@ p{margin:0}
 .infobar .ib-heart{padding-inline:.7rem}
 @media (max-width:420px){ .infobar{font-size:.68rem} .infobar > span{padding:.45rem .6rem} }
 
-.destaque{display:inline; padding:.06em .38em; line-height:1.55; -webkit-box-decoration-break:clone; box-decoration-break:clone; background:var(--azul-medio); color:var(--branco)}
+.destaque{display:inline; padding:.06em .38em; line-height:1.55; -webkit-box-decoration-break:clone; box-decoration-break:clone; background:linear-gradient(var(--azul-medio),var(--azul-medio)) 0 0/100% 100% no-repeat; color:var(--branco)}
 
 .btn{display:inline-flex; align-items:center; justify-content:center; gap:.55rem; min-height:3rem; padding:.7rem 1.5rem; border-radius:999px; font:inherit; font-size:1rem; font-weight:700; text-decoration:none; cursor:pointer; border:2px solid transparent; transition:background .2s, color .2s, border-color .2s}
 .btn-primario{background:var(--vermelho); color:var(--branco); border-color:var(--vermelho)}
-.btn-primario:hover{background:var(--vermelho-vivo); border-color:var(--vermelho-vivo)}
+.btn-primario:hover{border-color:var(--vermelho-vivo)}
 .btn-secundario{background:transparent; color:var(--ib, var(--branco)); border-color:var(--ib, var(--branco))}
-.btn-secundario:hover{background:var(--ib, var(--branco)); color:var(--azul)}
+.btn-secundario:hover{color:var(--azul)}
 .btn svg{width:1.1em; height:1.1em; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round}
 
 .titulo-secao{display:grid; gap:var(--gap-titulo); margin-bottom:clamp(2.5rem, 5vw, 4rem); max-width:52rem}
@@ -145,15 +150,18 @@ p{margin:0}
 .acoes{display:flex; flex-wrap:wrap; gap:.8rem; margin-top:.4rem}
 .colagem{position:relative; width:100%; max-width:540px; aspect-ratio:1/1.02; justify-self:end}
 .colagem > *{position:absolute}
-.colagem .c1{--c:var(--azul-medio); width:62%; left:0; top:9%}
-.colagem .c2{--c:var(--vermelho-vivo); width:47%; right:3%; bottom:0}
-.colagem .c3{--c:var(--rosa); width:41%; right:0; top:0; animation:girar 60s linear infinite}
-.colagem .c4{--c:var(--azul-vivo); width:44%; left:9%; bottom:0}
-.colagem .c5{--c:var(--rosa); width:88%; left:6%; top:44%; opacity:.85}
-.colagem .ic{width:clamp(56px, 7vw, 76px); aspect-ratio:1}
-.colagem .ic1{left:calc(31% - clamp(28px,3.5vw,38px)); top:calc(40% - clamp(28px,3.5vw,38px))}
-.colagem .ic2{right:calc(26.5% - clamp(28px,3.5vw,38px)); bottom:22%}
-.colagem .ic3{left:calc(31% - clamp(28px,3.5vw,38px)); bottom:12%}
+.colagem .peca{will-change:transform}
+.colagem .peca > *{width:100%}
+.colagem .p1{width:62%; left:0; top:9%}
+.colagem .p2{width:47%; right:3%; bottom:0}
+.colagem .p3{width:41%; right:0; top:0}
+.colagem .p4{width:44%; left:9%; bottom:0}
+.colagem .p5{width:88%; left:6%; top:44%; opacity:.9}
+.colagem .pi1, .colagem .pi2, .colagem .pi3{width:clamp(56px, 7vw, 76px)}
+.colagem .ic{aspect-ratio:1}
+.colagem .pi1{left:calc(31% - clamp(28px,3.5vw,38px)); top:calc(40% - clamp(28px,3.5vw,38px))}
+.colagem .pi2{right:calc(26.5% - clamp(28px,3.5vw,38px)); bottom:22%}
+.colagem .pi3{left:calc(31% - clamp(28px,3.5vw,38px)); bottom:12%}
 .colagem .foto-hero{inset:auto 6% 0 auto; width:70%; filter:url(#contorno-branco)}
 @keyframes girar{to{transform:rotate(360deg)}}
 .hero-rodape{display:flex; justify-content:flex-end; padding-top:1.5rem}
@@ -201,13 +209,13 @@ p{margin:0}
 .historia{background:var(--rosa-claro); color:var(--azul)}
 .historia-grade{display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); gap:clamp(2rem, 6vw, 5rem); align-items:start}
 .ano{position:relative; padding-top:1rem}
-.ano .forma{position:absolute; left:-4%; top:38%; width:108%; --c:var(--vermelho-vivo); opacity:.35}
-.ano .forma.b{--c:var(--azul-medio); top:58%; left:6%; opacity:.25}
-.ano span{position:relative; display:block; font-family:var(--f-titulo); font-size:clamp(7rem, 20vw, 16rem); line-height:.85; color:var(--vermelho); letter-spacing:-.01em}
+.ano .ondas-svg{position:absolute; left:-4%; top:36%; width:108%; opacity:.5}
+.ano .ondas-b{top:60%; left:6%; opacity:.35}
+.ano .ano-num{position:relative; display:block; font-family:var(--f-titulo); font-size:clamp(7rem, 20vw, 16rem); line-height:.85; color:var(--vermelho); letter-spacing:-.01em}
 .historia-texto{display:grid; gap:var(--gap-titulo)}
 .historia-texto .paragrafos{display:grid; gap:1.15rem; max-width:38rem}
 .historia-texto .paragrafos p:first-child{font-size:var(--lead); line-height:1.45}
-@media (max-width:860px){ .historia-grade{grid-template-columns:1fr} .ano span{font-size:clamp(6rem, 34vw, 10rem)} }
+@media (max-width:860px){ .historia-grade{grid-template-columns:1fr} .ano .ano-num{font-size:clamp(6rem, 34vw, 10rem)} }
 
 /* ---------- parceiros (módulo opcional) ---------- */
 .parceiros{background:var(--azul); padding-block:clamp(3rem, 6vw, 4.5rem)}
@@ -287,7 +295,7 @@ p{margin:0}
 .contatos a{text-decoration-color:var(--azul-vivo); text-underline-offset:.25em; text-decoration-thickness:2px}
 .contatos .mini{display:inline-flex; align-items:center; gap:.35rem; margin-left:.6rem; background:none; border:0; color:var(--rosa); font:inherit; font-size:.85rem; font-weight:700; cursor:pointer; padding:.2rem 0; text-decoration:underline; text-underline-offset:.25em}
 .marca-contato{display:grid; gap:1.75rem; justify-items:start}
-.marca-contato .logo{width:min(260px, 70%)}
+.marca-contato .logo-enso{width:min(240px, 64%)}
 @media (max-width:860px){ .contato-grade{grid-template-columns:1fr} .contatos li{grid-template-columns:1fr; gap:.2rem} }
 
 .rodape{background:var(--azul-noite); border-top:2px solid rgba(255,255,255,.14); padding-block:2rem calc(env(safe-area-inset-bottom,0px) + 2rem); font-size:.88rem; color:var(--azul-claro)}
@@ -299,8 +307,155 @@ p{margin:0}
 
 .oculto{display:none!important}
 [hidden]{display:none!important}
-</style>
+/* =====================================================================
+   SISTEMA DE MOVIMENTO
+   Cada gesto vem de um elemento do manual: a pincelada do ensō, o selo
+   serrilhado que carimba, as ondulações, a fita da barra de informações,
+   o marcador das caixas de destaque e o coração da rede.
+   Tudo é desligado com "reduzir movimento" e pelo botão de pausa.
+   ===================================================================== */
+@property --ang{syntax:"<angle>"; inherits:false; initial-value:0deg}
+:root{
+  --ease-pincel:cubic-bezier(.65,.05,.25,1);
+  --ease-selo:cubic-bezier(.25,1.5,.4,1);
+  --ease-suave:cubic-bezier(.2,.7,.2,1);
+  --t0:.2s;
+}
+html.com-abertura{--t0:1.9s}
+.hero, .empreendedoras, .envolva, .contato, .relatos{--tinta:var(--rosa)}
+.apoio, .historia, .professores{--tinta:var(--vermelho-vivo)}
 
+/* ensō pincelado (abertura e contato) */
+.enso-pincel{display:block; width:100%; aspect-ratio:249/230; --ang:360deg;
+  -webkit-mask:conic-gradient(from 18deg, #000 var(--ang), transparent 0); mask:conic-gradient(from 18deg, #000 var(--ang), transparent 0)}
+.enso-pincel > span{display:block; width:100%; height:100%; background:var(--branco); -webkit-mask:url(assets/enso.png) center/contain no-repeat; mask:url(assets/enso.png) center/contain no-repeat}
+.marca-v{display:block; width:100%; aspect-ratio:500/107; background:var(--branco); -webkit-mask:url(assets/marca_v.png) center/contain no-repeat; mask:url(assets/marca_v.png) center/contain no-repeat}
+.logo-enso{display:grid; gap:7%; width:100%}
+.logo-enso .marca-v{width:100%}
+@keyframes pincelar{from{--ang:0deg} to{--ang:360deg}}
+@keyframes surgir{from{opacity:0; translate:0 .8rem}}
+
+.abertura{display:none}
+html.com-abertura .abertura{display:grid; place-items:center; position:fixed; inset:0; z-index:200; background:var(--azul); cursor:pointer; clip-path:inset(0 0 0 0);
+  animation:cortina .85s var(--ease-pincel) 1.45s forwards}
+html.com-abertura .abertura.rapida{animation-duration:.45s; animation-delay:0s}
+.ab-logo{position:relative; z-index:1; display:grid; justify-items:center; gap:1.3rem; width:min(46vw, 230px); animation:recuar .85s var(--ease-pincel) 1.45s forwards}
+.abertura.rapida .ab-logo{animation-duration:.45s; animation-delay:0s}
+.ab-logo .enso-pincel{width:62%; animation:pincelar 1.05s var(--ease-pincel) .1s backwards}
+.ab-logo .marca-v{animation:surgir .6s var(--ease-suave) .85s backwards}
+@keyframes cortina{to{clip-path:inset(0 0 100% 0); visibility:hidden}}
+@keyframes recuar{to{scale:.82; translate:0 -3rem; opacity:0}}
+
+html.mov .contato:not(.visto) .logo-enso .enso-pincel{--ang:0deg}
+html.mov .contato:not(.visto) .logo-enso .marca-v{opacity:0}
+html.mov .contato.visto .logo-enso .enso-pincel{animation:pincelar 1.3s var(--ease-pincel) .2s backwards}
+html.mov .contato.visto .logo-enso .marca-v{animation:surgir .7s var(--ease-suave) 1.1s backwards}
+
+/* selo que carimba */
+@keyframes selo{0%{scale:0; rotate:-24deg} 62%{scale:1.1; rotate:5deg} 100%{scale:1; rotate:0deg}}
+@keyframes flutuar{from{translate:0 -5px} to{translate:0 7px}}
+@keyframes girar{to{transform:rotate(360deg)}}
+html.mov .selo-hero{animation:selo .95s var(--ease-selo) calc(var(--t0) + var(--i,0) * .11s) backwards}
+html.mov .selo-hero.flutua{animation:selo .95s var(--ease-selo) calc(var(--t0) + var(--i,0) * .11s) backwards, flutuar var(--fd,7s) ease-in-out calc(var(--t0) + 1s) infinite alternate}
+html.mov .selo-hero.gira{animation:selo .95s var(--ease-selo) calc(var(--t0) + var(--i,0) * .11s) backwards, girar 60s linear infinite}
+html:not(.mov) .gira{animation:girar 60s linear infinite}
+
+html.mov .secao:not(.visto) .selo-ver{scale:0}
+html.mov .secao.visto .selo-ver{animation:selo .9s var(--ease-selo) calc(.25s + var(--i,0) * .1s) backwards}
+.selo-ver{transition:rotate .9s var(--ease-selo), scale .9s var(--ease-selo)}
+
+/* cartões que sobem e inclinam */
+html.mov .secao:not(.visto) .sobe{translate:0 3rem}
+html.mov .sobe{transition:translate 1.1s var(--ease-suave) calc(var(--i,0) * 90ms + .05s), transform .6s var(--ease-suave)}
+html.mov .sobe.inclinando{transition:translate 1.1s var(--ease-suave), transform .12s linear}
+.inclina{transform:perspective(1000px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg))}
+.card-apoio:hover .forma{rotate:28deg; scale:1.15}
+.card-apoio:hover .icone{rotate:-8deg}
+.card-apoio .icone{transition:rotate .6s var(--ease-selo)}
+.emp:hover .emp-midia .forma{rotate:16deg; scale:1.08}
+.emp-midia img{transition:translate .6s var(--ease-suave)}
+.emp:hover .emp-midia img{translate:0 -8px}
+.prof:hover .prof-foto .forma{scale:1.04; rotate:-2deg}
+
+/* títulos: tinta que assenta */
+.palavra{display:inline-block}
+html.mov .palavra{transition:translate 1s var(--ease-suave) calc(var(--w) * 55ms + .05s), color 1.4s var(--ease-suave) calc(var(--w) * 55ms + .15s)}
+html.mov .secao:not(.visto) .palavra{translate:0 .42em; color:var(--tinta)}
+html.mov .hero .palavra{transition-delay:calc(var(--t0) + var(--w) * 70ms), calc(var(--t0) + var(--w) * 70ms + .15s)}
+
+/* marcador nas caixas de destaque */
+@keyframes marcar{from{background-size:0% 100%}}
+html.mov .hero .destaque{animation:marcar 1s var(--ease-pincel) calc(var(--t0) + .3s) backwards}
+
+/* ondulações vivas */
+.ondas-svg{display:block; pointer-events:none}
+.ondas-svg svg{display:block; width:100%; height:auto; overflow:visible}
+.ondas-svg path{fill:none; stroke-width:1.6; vector-effect:non-scaling-stroke; stroke-linecap:round; stroke-dasharray:1; stroke-dashoffset:0}
+.ondas-svg .linha{animation:fluir var(--vel,9s) linear infinite}
+.ondas-svg .linha.inv{animation-direction:reverse}
+@keyframes fluir{to{transform:translateX(-60px)}}
+@keyframes desenhar{from{stroke-dashoffset:1}}
+html.mov .colagem .ondas-svg path{animation:desenhar 1.8s var(--ease-suave) calc(var(--t0) + .45s + var(--k) * .1s) backwards}
+html.mov .secao:not(.visto) .ano .ondas-svg path{stroke-dashoffset:1}
+html.mov .secao.visto .ano .ondas-svg path{animation:desenhar 2s var(--ease-suave) calc(.2s + var(--k) * .12s) backwards}
+
+/* fitas de assinatura */
+.fitas{position:relative; height:clamp(10.5rem, 17vw, 13rem); background:linear-gradient(var(--azul) 50%, var(--azul-claro) 50%); overflow:hidden; z-index:2}
+.fita{position:absolute; left:-6%; width:112%; padding-block:clamp(.55rem, 1.2vw, .8rem); white-space:nowrap; overflow:hidden}
+.fita-1{background:var(--vermelho); color:var(--branco); rotate:-1.6deg; top:6%}
+.fita-2{background:var(--rosa); color:var(--azul); rotate:1.2deg; top:52%}
+@media (max-width:600px){ .fita-2{top:44%} }
+.fita-trilho{display:flex; width:max-content; will-change:transform}
+.fita-item{font-family:var(--f-titulo); font-size:clamp(1.35rem, 3vw, 2.3rem); line-height:1.1; display:inline-flex; align-items:center; gap:clamp(1rem, 2vw, 1.6rem); padding-right:clamp(1rem, 2vw, 1.6rem)}
+.fita-item svg{width:.62em; height:.62em; fill:currentColor; flex:none}
+.pausar{position:absolute; left:var(--margem); bottom:.5rem; z-index:3; width:2.5rem; height:2.5rem; border-radius:50%; border:2px solid var(--azul); background:var(--azul-claro); color:var(--azul); display:grid; place-items:center; cursor:pointer; padding:0}
+.pausar svg{width:1.1rem; height:1.1rem; stroke:currentColor; stroke-width:2.4; fill:none; stroke-linecap:round; stroke-linejoin:round}
+.pausar .ic-play{display:none; fill:currentColor; stroke:none}
+.pausar[aria-pressed="true"] .ic-play{display:block}
+.pausar[aria-pressed="true"] .ic-pausa{display:none}
+html:not(.mov) .pausar{display:none}
+
+/* bordas serrilhadas entre seções */
+.selo-topo::after{content:""; position:absolute; left:0; right:0; top:-1px; height:12px; z-index:2; pointer-events:none;
+  background:radial-gradient(circle at 50% 0, var(--cor-acima) 8.5px, transparent 9px) 0 0/20px 12px repeat-x}
+
+/* coração da barra de informações */
+@keyframes batida{0%,26%,100%{scale:1} 7%{scale:1.32} 13%{scale:1} 19%{scale:1.2}}
+html.mov .infobar .ib-heart svg{animation:batida 3.4s ease-in-out 2.4s infinite}
+
+/* navegação: indicador que acompanha a leitura e cápsula compacta */
+.capsula nav{position:relative}
+.nav-ind{position:absolute; left:0; bottom:calc(50% - .95rem); height:2px; width:0; background:var(--rosa); border-radius:2px; opacity:0; transition:transform .5s var(--ease-suave), width .5s var(--ease-suave), opacity .3s}
+.capsula nav a.ativo{color:var(--rosa)}
+.capsula, .capsula .cel-logo .logo{transition:min-height .4s var(--ease-suave), width .4s var(--ease-suave)}
+.topo.compacto .capsula{min-height:2.95rem}
+.topo.compacto .cel-logo .logo{width:7.6rem}
+
+/* botões: varredura de cor, como o marcador */
+.btn{position:relative; isolation:isolate; overflow:hidden}
+.btn::before{content:""; position:absolute; inset:0; z-index:-1; background:var(--varre, var(--vermelho-vivo)); transform:scaleX(0); transform-origin:right center; transition:transform .5s var(--ease-pincel)}
+.btn:hover::before{transform:scaleX(1); transform-origin:left center}
+.btn-secundario{--varre:var(--ib, var(--branco)); transition:color .3s .08s, border-color .2s}
+
+/* texturas com profundidade */
+.tex-abstrata::before, .tex-fluida::before{-webkit-mask-position:center calc(50% + var(--py, 0px)); mask-position:center calc(50% + var(--py, 0px))}
+@keyframes grao{0%{-webkit-mask-position:0 0; mask-position:0 0} 33%{-webkit-mask-position:-47px 81px; mask-position:-47px 81px} 66%{-webkit-mask-position:73px -29px; mask-position:73px -29px}}
+html.mov .tex-granulada::before{animation:grao 1.1s steps(1) infinite}
+
+/* corações do Pix */
+.coracao-voa{position:fixed; z-index:120; width:22px; height:22px; pointer-events:none; color:var(--rosa)}
+.coracao-voa svg{width:100%; height:100%; fill:currentColor}
+
+/* economia: nada se move fora da tela ou com pausa */
+.fora *, .fora::before, .fora::after{animation-play-state:paused!important}
+html.parado *, html.parado *::before, html.parado *::after{animation-play-state:paused!important}
+.dica-deslizar{transition:opacity .4s}
+.dica-deslizar.usada{opacity:0}
+
+</style>
+<link rel="icon" href="assets/enso.png" type="image/png">
+</head>
+<body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <filter id="contorno-branco" x="-10%" y="-10%" width="120%" height="120%">
     <feMorphology in="SourceAlpha" operator="dilate" radius="8" result="d"/>
@@ -314,6 +469,9 @@ p{margin:0}
   <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h18"/></symbol>
 </svg>
 
+<div class="abertura tex tex-abstrata" id="abertura" aria-hidden="true" style="--tex-cor:var(--azul-noite)">
+  <div class="ab-logo"><span class="enso-pincel"><span></span></span><span class="marca-v"></span></div>
+</div>
 <a class="pular" href="#conteudo">Pular para o conteúdo</a>
 <div id="previa"></div>
 
@@ -351,20 +509,26 @@ p{margin:0}
           </div>
         </div>
         <div class="colagem" aria-hidden="true" id="colagem">
-          <span class="forma f-circulo c1"></span>
-          <span class="forma f-cupula c4"></span>
-          <span class="forma f-arco c2"></span>
-          <span class="forma f-estrela c3"></span>
-          <span class="forma f-ondas c5"></span>
-          <img class="ic ic1" src="assets/ic_az_aprend.png" alt="">
-          <img class="ic ic2" src="assets/ic_vm_radar.png" alt="">
-          <img class="ic ic3" src="assets/ic_az_projeto.png" alt="">
+          <div class="peca p1" data-z=".35"><span class="forma f-circulo selo-hero flutua" style="--c:var(--azul-medio); --i:0; --fd:8s"></span></div>
+          <div class="peca p4" data-z=".55"><span class="forma f-cupula selo-hero flutua" style="--c:var(--azul-vivo); --i:1; --fd:6.5s"></span></div>
+          <div class="peca p2" data-z=".45"><span class="forma f-arco selo-hero flutua" style="--c:var(--vermelho-vivo); --i:2; --fd:7.4s"></span></div>
+          <div class="peca p3" data-z=".9"><span class="forma f-estrela selo-hero gira" style="--c:var(--rosa); --i:3"></span></div>
+          <div class="peca p5" data-z=".2"><span class="ondas-svg" data-ondas="6" data-cor="var(--rosa)" data-atraso="hero"></span></div>
+          <div class="peca pi1" data-z="1.1"><img class="ic selo-hero flutua" style="--i:5; --fd:5.5s" src="assets/ic_az_aprend.png" alt=""></div>
+          <div class="peca pi2" data-z="1.2"><img class="ic selo-hero flutua" style="--i:6; --fd:6.2s" src="assets/ic_vm_radar.png" alt=""></div>
+          <div class="peca pi3" data-z="1"><img class="ic selo-hero flutua" style="--i:7; --fd:5.8s" src="assets/ic_az_projeto.png" alt=""></div>
         </div>
       </div>
       <div class="indicadores" id="indicadores"></div>
     </div>
     <div class="wrap hero-rodape" aria-hidden="true" style="position:absolute; right:0; left:0; bottom:1.4rem; z-index:2"><span class="mao"></span></div>
   </section>
+
+  <div class="fitas" id="fitas">
+    <div class="fita fita-1" aria-hidden="true"><div class="fita-trilho" data-itens="Formação|Capital-Semente|Rede de Apoio|Fundo de transformação social"></div></div>
+    <div class="fita fita-2" aria-hidden="true"><div class="fita-trilho" data-itens="@fundomanamano|Projeto de extensão da UFRJ"></div></div>
+    <button class="pausar" id="pausar" type="button" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24"><path class="ic-pausa" d="M8 5v14M16 5v14"/><path class="ic-play" d="M7 5l12 7-12 7z"/></svg><span class="sr" id="pausar-txt">Pausar animações</span></button>
+  </div>
 
   <section class="secao apoio claro tex tex-granulada" id="como-apoiamos" aria-labelledby="t-apoio">
     <div class="wrap">
@@ -381,9 +545,9 @@ p{margin:0}
     </div>
   </section>
 
-  <section class="secao historia claro" id="nossa-historia" aria-labelledby="t-historia">
+  <section class="secao historia claro selo-topo" style="--cor-acima:var(--vermelho)" id="nossa-historia" aria-labelledby="t-historia">
     <div class="wrap historia-grade">
-      <div class="ano" aria-hidden="true"><span class="forma f-ondas"></span><span class="forma f-ondas b"></span><span>2020</span></div>
+      <div class="ano" aria-hidden="true"><span class="ondas-svg ondas-a" data-ondas="6" data-cor="var(--vermelho-vivo)"></span><span class="ondas-svg ondas-b" data-ondas="4" data-cor="var(--azul-medio)"></span><span class="ano-num">2020</span></div>
       <div class="historia-texto">
         <h2 id="t-historia">Nossa História</h2>
         <div class="paragrafos" data-p="historia.paragrafos"></div>
@@ -407,7 +571,7 @@ p{margin:0}
     </div>
   </section>
 
-  <section class="secao professores claro" id="professores" aria-labelledby="t-prof">
+  <section class="secao professores claro selo-topo" style="--cor-acima:var(--azul)" id="professores" aria-labelledby="t-prof">
     <div class="wrap">
       <div class="titulo-secao"><h2 id="t-prof">Nossos Professores</h2></div>
       <div class="grade-prof" id="grade-prof"></div>
@@ -443,13 +607,13 @@ p{margin:0}
     </div>
   </section>
 
-  <section class="secao contato" id="contato" aria-labelledby="t-contato">
+  <section class="secao contato selo-topo" style="--cor-acima:var(--azul)" id="contato" aria-labelledby="t-contato">
     <div class="wrap">
       <div class="titulo-secao"><h2 id="t-contato">Contato</h2></div>
       <div class="contato-grade">
         <ul class="contatos" id="lista-contatos"></ul>
         <div class="marca-contato">
-          <span class="logo logo-v" role="img" aria-label="ManaMano, Fundo de transformação social"></span>
+          <div class="logo-enso" role="img" aria-label="ManaMano, Fundo de transformação social"><span class="enso-pincel"><span></span></span><span class="marca-v"></span></div>
           <div class="infobar" style="--ib:var(--rosa)" aria-label="@fundomanamano, Fundo de transformação social">
             <span class="ib-heart"><svg aria-hidden="true"><use href="#i-coracao"/></svg></span><span>@fundomanamano</span><span>Fundo de transformação social</span>
           </div>
@@ -483,7 +647,7 @@ p{margin:0}
       Antes de colocar o site no ar, mude para false.
    ===================================================================== */
 const CONTEUDO = {
-  modoPrevia: true,
+  modoPrevia: false,
 
   hero: {
     titulo: "Fundo ManaMano",
@@ -699,19 +863,190 @@ const CONTEUDO = {
 
   /* copiar */
   const copiar = (texto, aviso, msg, alvoSel) => {
-    const ok = () => { aviso.textContent = msg; clearTimeout(aviso._t); aviso._t = setTimeout(() => aviso.textContent = "", 3000); };
+    const ok = () => { document.dispatchEvent(new CustomEvent("copiado", { detail: alvoSel })); aviso.textContent = msg; clearTimeout(aviso._t); aviso._t = setTimeout(() => aviso.textContent = "", 3000); };
     const selecionar = () => { const r = document.createRange(); r.selectNodeContents(document.querySelector(alvoSel)); const s = getSelection(); s.removeAllRanges(); s.addRange(r); };
     try { navigator.clipboard.writeText(texto).then(ok, () => { selecionar(); }); } catch (e) { selecionar(); }
   };
   $("#copiar-pix").addEventListener("click", () => copiar(C.doacao.pix, $("#aviso-pix"), "Chave copiada", "#chave-pix"));
   $("#copiar-email").addEventListener("click", () => copiar(ct.email, $("#aviso-email"), "E-mail copiado", "#email-txt"));
 
-  /* contagem dos indicadores */
+})();
+</script>
+
+<script>
+/* ===================== SISTEMA DE MOVIMENTO ===================== */
+(function(){
+  const raiz = document.documentElement;
   const reduz = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (!reduz) document.querySelectorAll("[data-alvo]").forEach(el => {
-    const alvo = +el.dataset.alvo, t0 = performance.now(), dur = alvo > 10 ? 1400 : 900;
-    const passo = t => { const k = Math.min(1, (t - t0) / dur); el.textContent = Math.round(alvo * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(passo); };
-    requestAnimationFrame(passo);
+  const fino = matchMedia("(hover: hover) and (pointer: fine)").matches;
+  const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+  const esc = t => t.replace(/[&<>"]/g, m => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));
+  const coracao = '<svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-coracao"/></svg>';
+
+  /* ondulações: senoides contínuas, cada linha corre num sentido */
+  $$("[data-ondas]").forEach(el => {
+    const n = +el.dataset.ondas || 5, cor = el.dataset.cor || "currentColor";
+    const L = 60, A = 7, G = 13, W = 600, H = (n - 1) * G + A * 2 + 4;
+    let linhas = "";
+    for (let k = 0; k < n; k++) {
+      const y = A + 2 + k * G;
+      let d = `M${-L} ${y} Q${-L + L / 4} ${y - A} ${-L + L / 2} ${y}`;
+      for (let x = -L + L / 2; x < W + L * 2; x += L / 2) d += ` T${x + L / 2} ${y}`;
+      linhas += `<g class="linha ${k % 2 ? "inv" : ""}" style="--vel:${8 + (k % 3) * 2.5}s"><path pathLength="1" d="${d}" style="--k:${k}"/></g>`;
+    }
+    el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" style="stroke:${cor}">${linhas}</svg>`;
+  });
+
+  /* fitas: monta os itens (o movimento vem depois) */
+  $$(".fita-trilho").forEach(t => {
+    const itens = t.dataset.itens.split("|");
+    t.innerHTML = `<span class="fita-set">${itens.map(i => `<span class="fita-item">${esc(i)}${coracao}</span>`).join("")}</span>`;
+  });
+
+  if (reduz) return;
+  raiz.classList.add("mov", "iniciando");
+
+  /* títulos em palavras, com texto inteiro preservado para leitores de tela */
+  $$("main h1, main h2").forEach(h => {
+    const txt = h.textContent.trim(); if (!txt) return;
+    h.innerHTML = `<span class="sr">${esc(txt)}</span><span aria-hidden="true">${txt.split(/\s+/).map((w, i) => `<span class="palavra" style="--w:${i}">${esc(w)}</span>`).join(" ")}</span>`;
+  });
+
+  /* cartões e selos ganham ordem de entrada */
+  const marcar = (sel, cls) => $$(sel).forEach(el => { el.classList.add(cls); el.style.setProperty("--i", [...el.parentElement.children].filter(c => c.matches(sel)).indexOf(el)); });
+  marcar(".card-apoio", "sobe"); marcar(".relato", "sobe"); marcar(".emp", "sobe"); marcar(".prof", "sobe"); marcar(".bloco", "sobe");
+  $$(".card-apoio .icone, .card-apoio .forma, .relato .aspas, .emp-midia .forma, .bloco .icone, .bloco > .forma").forEach((el, i) => { el.classList.add("selo-ver"); el.style.setProperty("--i", i % 4); });
+  if (fino) $$(".card-apoio, .emp").forEach(c => c.classList.add("inclina"));
+
+  /* abertura: uma vez por visita */
+  let abertura = true;
+  try { abertura = !sessionStorage.getItem("mm-abertura"); sessionStorage.setItem("mm-abertura", "1"); } catch (e) {}
+  const ab = $("#abertura");
+  if (abertura) {
+    raiz.classList.add("com-abertura");
+    const pular = () => ab.classList.add("rapida");
+    ab.addEventListener("click", pular); addEventListener("keydown", pular, { once: true });
+    setTimeout(() => ab.remove(), 2600);
+  } else ab.remove();
+  const t0 = abertura ? 1900 : 200;
+
+  /* aplica estados iniciais sem transição e só então começa a observar */
+  void document.body.offsetHeight;
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    raiz.classList.remove("iniciando");
+    $$(".secao, .fitas").forEach(s => io.observe(s));
+  }));
+
+  /* contagem dos indicadores */
+  let contou = false;
+  const contar = () => { if (contou) return; contou = true;
+    $$("[data-alvo]").forEach(el => { const alvo = +el.dataset.alvo; el.textContent = "0";
+      setTimeout(() => { const ini = performance.now(), dur = alvo > 10 ? 1600 : 1000;
+        const passo = t => { const k = Math.min(1, (t - ini) / dur); el.textContent = Math.round(alvo * (1 - Math.pow(1 - k, 4))); if (k < 1) requestAnimationFrame(passo); };
+        requestAnimationFrame(passo); }, t0 + 500); });
+  };
+
+  /* entrada das seções e pausa fora da tela */
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add("visto"); if (e.target.id === "inicio") contar(); }
+    e.target.classList.toggle("fora", !e.isIntersecting);
+  }), { rootMargin: "0px 0px -10% 0px" });
+
+  /* indicador da navegação */
+  const nav = $(".capsula nav"), links = $$("#nav-links a");
+  const ind = document.createElement("span"); ind.className = "nav-ind"; ind.setAttribute("aria-hidden", "true"); nav.append(ind);
+  const mover = a => {
+    links.forEach(l => { l.classList.toggle("ativo", l === a); a === l ? l.setAttribute("aria-current", "location") : l.removeAttribute("aria-current"); });
+    if (!a || !a.offsetWidth) { ind.style.opacity = 0; return; }
+    const r = a.getBoundingClientRect(), n = nav.getBoundingClientRect();
+    ind.style.opacity = 1; ind.style.width = r.width + "px"; ind.style.transform = `translateX(${r.left - n.left}px)`;
+  };
+  const spy = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) mover(links.find(l => l.getAttribute("href") === "#" + e.target.id) || null); }), { rootMargin: "-45% 0px -50% 0px" });
+  $$("main > section:not(.oculto)").forEach(s => spy.observe(s));
+  addEventListener("resize", () => mover(links.find(l => l.classList.contains("ativo")) || null));
+
+  /* fitas: velocidade e sentido seguem a rolagem */
+  const fitas = $$(".fita-trilho").map((el, i) => ({ el, x: 0, w: 0, sentido: i ? -1 : 1 }));
+  const montarFitas = () => fitas.forEach(f => {
+    const set = f.el.querySelector(".fita-set"); f.el.querySelectorAll(".fita-set + .fita-set").forEach(c => c.remove());
+    f.w = set.offsetWidth || 1; const precisa = Math.ceil((f.el.parentElement.offsetWidth * 2) / f.w) + 1;
+    for (let k = 1; k < precisa; k++) f.el.append(set.cloneNode(true));
+    f.x = f.sentido > 0 ? 0 : -f.w;
+  });
+  montarFitas(); (document.fonts && document.fonts.ready || Promise.resolve()).then(montarFitas);
+  let rt; addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(montarFitas, 200); });
+  const blocoFitas = $("#fitas"); let sobreFitas = false;
+  blocoFitas.addEventListener("pointerenter", () => sobreFitas = true); blocoFitas.addEventListener("pointerleave", () => sobreFitas = false);
+
+  /* pausa geral */
+  const bt = $("#pausar");
+  bt.addEventListener("click", () => { const p = raiz.classList.toggle("parado"); bt.setAttribute("aria-pressed", p); $("#pausar-txt").textContent = p ? "Retomar animações" : "Pausar animações"; });
+
+  /* rolagem: cápsula compacta, profundidade das texturas, impulso das fitas */
+  const topo = $(".topo"); let ultY = scrollY, impulso = 0, dir = 1, agendado = false;
+  const texturas = $$(".tex-abstrata.secao, .tex-fluida.secao");
+  const aoRolar = () => { agendado = false;
+    topo.classList.toggle("compacto", scrollY > 40);
+    if (raiz.classList.contains("parado")) return;
+    texturas.forEach(s => { if (s.classList.contains("fora")) return; s.style.setProperty("--py", (s.getBoundingClientRect().top * -0.14).toFixed(1) + "px"); });
+  };
+  addEventListener("scroll", () => { const y = scrollY, d = y - ultY; if (d) dir = d > 0 ? 1 : -1; impulso = Math.min(9, impulso + Math.abs(d) * 0.035); ultY = y;
+    if (!agendado) { agendado = true; requestAnimationFrame(aoRolar); } }, { passive: true });
+  aoRolar();
+
+  /* colagem do hero responde ao ponteiro */
+  const colagem = $("#colagem"), pecas = $$("#colagem .peca").map(el => ({ el, z: +el.dataset.z || .5 }));
+  let alvoX = 0, alvoY = 0, atualX = 0, atualY = 0;
+  if (fino) $("#inicio").addEventListener("pointermove", e => { alvoX = (e.clientX / innerWidth - .5) * 2; alvoY = (e.clientY / innerHeight - .5) * 2; });
+
+  /* um único laço de animação para tudo que é contínuo */
+  let antes = performance.now();
+  const laco = agora => {
+    const dt = Math.min(0.05, (agora - antes) / 1000); antes = agora;
+    const parado = raiz.classList.contains("parado");
+    if (!parado && !blocoFitas.classList.contains("fora") && !sobreFitas) {
+      fitas.forEach(f => { f.x -= (55 + impulso * 45) * dt * dir * f.sentido;
+        if (f.x <= -f.w) f.x += f.w; if (f.x > 0) f.x -= f.w;
+        f.el.style.transform = `translate3d(${f.x.toFixed(2)}px,0,0)`; });
+    }
+    impulso *= 0.93;
+    if (fino && !parado && !$("#inicio").classList.contains("fora")) {
+      atualX += (alvoX - atualX) * 0.06; atualY += (alvoY - atualY) * 0.06;
+      pecas.forEach(p => p.el.style.transform = `translate3d(${(atualX * p.z * 16).toFixed(2)}px, ${(atualY * p.z * 16).toFixed(2)}px, 0)`);
+    }
+    requestAnimationFrame(laco);
+  };
+  requestAnimationFrame(laco);
+
+  /* cartões inclinam seguindo o ponteiro */
+  if (fino) $$(".inclina").forEach(c => {
+    c.addEventListener("pointermove", e => { const r = c.getBoundingClientRect(); c.classList.add("inclinando");
+      c.style.setProperty("--ry", (((e.clientX - r.left) / r.width - .5) * 7).toFixed(2) + "deg");
+      c.style.setProperty("--rx", (((e.clientY - r.top) / r.height - .5) * -7).toFixed(2) + "deg"); });
+    c.addEventListener("pointerleave", () => { c.classList.remove("inclinando"); c.style.setProperty("--rx", "0deg"); c.style.setProperty("--ry", "0deg"); });
+  });
+
+  /* carrosséis: a mão some depois do primeiro gesto */
+  [["#trilho-emp", "#dica-emp"], ["#lista-relatos", "#dica-relatos"]].forEach(([t, d]) => { const tr = $(t), di = $(d); if (tr && di) tr.addEventListener("scroll", () => di.classList.add("usada"), { once: true, passive: true }); });
+
+  /* Pix copiado: corações da rede saem do botão */
+  document.addEventListener("copiado", e => {
+    if (e.detail !== "#chave-pix") return;
+    const r = $("#copiar-pix").getBoundingClientRect();
+    for (let k = 0; k < 9; k++) {
+      const c = document.createElement("span"); c.className = "coracao-voa"; c.innerHTML = coracao;
+      c.style.left = (r.left + r.width / 2 - 11) + "px"; c.style.top = (r.top + r.height / 2 - 11) + "px";
+      if (k % 3 === 1) c.style.color = "var(--branco)"; if (k % 3 === 2) c.style.color = "var(--vermelho-vivo)";
+      document.body.append(c);
+      const ang = (-90 + (k - 4) * 19) * Math.PI / 180, dist = 70 + Math.random() * 70;
+      c.animate([
+        { transform: "translate(0,0) scale(.3) rotate(0deg)", opacity: 1 },
+        { transform: `translate(${Math.cos(ang) * dist * .6}px, ${Math.sin(ang) * dist * .6}px) scale(1.15) rotate(${(k - 4) * 6}deg)`, opacity: 1, offset: .55 },
+        { transform: `translate(${Math.cos(ang) * dist}px, ${Math.sin(ang) * dist - 30}px) scale(.7) rotate(${(k - 4) * 12}deg)`, opacity: 0 }
+      ], { duration: 1000 + Math.random() * 300, easing: "cubic-bezier(.2,.7,.2,1)" }).onfinish = () => c.remove();
+    }
   });
 })();
 </script>
+</body>
+</html>
