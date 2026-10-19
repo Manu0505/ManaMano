@@ -32,6 +32,13 @@ Identidade visual: LUPA. Publicado pela Vercel a cada alteração na branch `mai
 Cada relato tem `voz` (`empreendedora`, `professora`, `parceira` ou `extensionista`), que vira filtro no site.
 Os textos vêm dos vídeos gravados na formatura de 2025, com ajustes leves de oralidade.
 
+## Fotos, logos e catálogos
+
+- `assets/fotos/`: retratos das empreendedoras das turmas de 2024 e 2025, recortados dos catálogos.
+- `assets/logos/`: logos de realização, parcerias e patrocínio, como nos catálogos.
+- `assets/catalogos/`: catálogos das turmas em PDF, em versão comprimida para a web.
+- Fotos de eventos entram em `assets/eventos/` e no campo `galeria` do `index.html`. A seção "Momentos" só aparece quando houver fotos.
+
 ## Pendências
 
 - Confirmar a grafia das marcas marcadas com `// confirmar` no `index.html` (Imagináfrica, Francis Arte, Totas, Criativo EcoArte e a marca da Cristiane).
