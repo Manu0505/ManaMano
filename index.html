@@ -400,10 +400,23 @@ p{margin:0}
 
 /* ---------- galeria ---------- */
 .galeria{background:var(--rosa-claro); color:var(--azul)}
-.grade-galeria{columns:3 260px; column-gap:1rem}
-.momento{margin:0 0 1rem; break-inside:avoid; display:grid; gap:.5rem}
-.momento img{width:100%; height:auto; border-radius:8px}
-.momento figcaption{font-size:var(--legenda)}
+.grade-galeria{display:grid; grid-template-columns:repeat(3,1fr); gap:2rem 1.25rem; align-items:stretch}
+.momento{margin:0; display:grid; grid-row:span 2; grid-template-rows:subgrid; row-gap:.75rem}
+.m-horizontal{grid-column:span 2}
+.momento-foto{position:relative; overflow:hidden; border-radius:10px; background:var(--azul); box-shadow:0 0 0 1px rgb(0 0 0 / .06)}
+.m-horizontal .momento-foto{aspect-ratio:3/2}
+.m-vertical .momento-foto{min-height:clamp(18rem, 32vw, 36rem)}
+.momento-foto img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.momento:hover .momento-foto img{transform:scale(1.035)}
+.momento figcaption{display:grid; align-content:start; gap:.2rem; font-size:var(--legenda); line-height:1.4}
+.momento figcaption strong{font-size:1.05rem; line-height:1.3}
+.momento-data{font-weight:700; text-transform:uppercase; letter-spacing:.08em; font-size:.75rem; color:var(--vermelho-vivo)}
+@media (max-width:760px){
+  .grade-galeria{grid-template-columns:1fr; gap:2rem}
+  .m-horizontal{grid-column:auto}
+  .m-horizontal .momento-foto, .m-vertical .momento-foto{aspect-ratio:auto; min-height:0}
+  .momento-foto img{position:static; height:auto}
+}
 
 /* =====================================================================
    SISTEMA DE MOVIMENTO
@@ -571,6 +584,7 @@ html.parado *, html.parado *::before, html.parado *::after{animation-play-state:
 <link rel="icon" href="assets/enso.png" type="image/png">
 </head>
 <body>
+
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <filter id="contorno-branco" x="-10%" y="-10%" width="120%" height="120%">
     <feMorphology in="SourceAlpha" operator="dilate" radius="8" result="d"/>
@@ -1046,8 +1060,22 @@ const CONTEUDO = {
   ],
 
   /* Galeria de eventos: só aparece quando houver fotos.
-     ex.: { src: "assets/eventos/formatura-2025-1.jpg", alt: "Formatura da 9ª turma", legenda: "Formatura da 9ª turma, novembro de 2025" } */
-  galeria: [],
+     formato: "horizontal" ocupa duas colunas, "vertical" ocupa uma. foco ajusta o recorte (object-position). */
+  galeria: [
+    { src: "assets/eventos/formatura-turma9-2025.jpg", formato: "horizontal", foco: "50% 45%",
+      titulo: "Formatura da turma 9 do ManaMano", data: "2 de dezembro de 2025",
+      alt: "Formandas da turma 9 comemoram no palco de um auditório com os certificados nas mãos, ao lado da equipe do ManaMano." },
+    { src: "assets/eventos/rio-innovation-week-2026.jpg", formato: "vertical", foco: "50% 60%",
+      titulo: "ManaMano no Rio Innovation Week", data: "5 de agosto de 2026",
+      alt: "Painel AndragogIA: educação empreendedora nos tempos de IA generativa, no palco do Rio Innovation Week, diante da plateia." },
+    { src: "assets/eventos/eco-ufrj-foto-publicitaria-2026.jpg", formato: "vertical", foco: "50% 70%",
+      titulo: "Parceria ManaMano e ECO-UFRJ", data: "27 de maio de 2026",
+      texto: "Apresentação das campanhas publicitárias feitas por alunos da disciplina Foto Publicitária.",
+      alt: "Cinco pessoas sorriem lado a lado em uma sala da ECO-UFRJ, diante de uma tela de projeção." },
+    { src: "assets/eventos/aula-inaugural-turma10-2026.jpg", formato: "horizontal", foco: "62% 50%",
+      titulo: "Aula inaugural da turma 10 do ManaMano", data: "14 de abril de 2026",
+      alt: "Empreendedoras e estudantes na plateia de um auditório acompanham uma roda de conversa com convidadas sentadas no palco." }
+  ],
 
   extensionista: [
     "A cada semestre, o Fundo ManaMano abre processos seletivos para estudantes da Universidade Federal do Rio de Janeiro interessados em atuar nas áreas de monitoria e comunicação.",
@@ -1211,7 +1239,10 @@ const CONTEUDO = {
   /* galeria de eventos */
   if (C.galeria?.length) {
     $("#galeria").classList.remove("oculto");
-    $("#grade-galeria").innerHTML = C.galeria.map(g => `<figure class="momento"><img src="${esc(g.src)}" alt="${esc(g.alt)}" loading="lazy">${g.legenda ? `<figcaption>${esc(g.legenda)}</figcaption>` : ""}</figure>`).join("");
+    $("#grade-galeria").innerHTML = C.galeria.map(g => `<figure class="momento ${g.formato === "vertical" ? "m-vertical" : "m-horizontal"}">
+      <div class="momento-foto"><img src="${esc(g.src)}" alt="${esc(g.alt)}" loading="lazy" style="object-position:${esc(g.foco || "50% 50%")}"></div>
+      <figcaption>${g.data ? `<span class="momento-data">${esc(g.data)}</span>` : ""}<strong>${esc(g.titulo || g.legenda || "")}</strong>${g.texto ? `<span class="momento-texto">${esc(g.texto)}</span>` : ""}</figcaption>
+    </figure>`).join("");
   }
 
   /* professores */
