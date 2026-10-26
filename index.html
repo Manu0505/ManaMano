@@ -354,6 +354,10 @@ p{margin:0}
 .no h3{font-size:clamp(1.4rem, 2vw, 1.75rem)}
 .no p{font-size:1rem; line-height:1.55}
 .frentes-titulo{font-size:var(--h3); margin:clamp(3rem, 6vw, 4.5rem) 0 1.5rem}
+.frentes-cab{display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:1rem 2rem; margin:clamp(3rem, 6vw, 4.5rem) 0 1.5rem}
+.frentes-cab .frentes-titulo{margin:0}
+.anos-equipe{margin:0}
+.anos-equipe .btn span{font-weight:400; opacity:.8}
 .frentes{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:clamp(1rem, 2vw, 1.4rem); align-items:start}
 .frente{border:2px solid rgba(255,255,255,.22); border-radius:8px; padding:1.4rem 1.4rem 1.2rem; display:grid; gap:.8rem; min-width:0}
 .frente h4{font-family:var(--f-titulo); font-weight:400; font-size:1.5rem; line-height:1.15; margin:0}
@@ -677,7 +681,7 @@ html.parado *, html.parado *::before, html.parado *::after{animation-play-state:
         <span class="ondas-svg rede-ondas" data-ondas="3" data-cor="var(--azul-vivo)" aria-hidden="true"></span>
         <ol class="rede" id="rede"></ol>
       </div>
-      <h3 class="frentes-titulo" id="frentes-titulo"></h3>
+      <div class="frentes-cab"><h3 class="frentes-titulo" id="frentes-titulo"></h3><div class="filtros anos-equipe" id="anos-equipe" role="group" aria-label="Escolha o ano da equipe"></div></div>
       <div class="frentes" id="frentes"></div>
     </div>
   </section>
@@ -828,7 +832,7 @@ const CONTEUDO = {
     ],
     foto: null, // ex.: { src: "assets/fotos/turma.png", alt: "Empreendedoras da turma de 2025 reunidas na Praia Vermelha" }
     indicadores: [
-      { pre: "Mais de", num: 100, pos: "empreendedoras atendidas" },
+      { pre: "", num: 110, pos: "empreendedoras capacitadas" }, // catálogo da 10ª turma
       { pre: "", num: 6, pos: "anos de atuação" },
       { pre: "Projeto de extensão da", num: "UFRJ", pos: "" }
     ]
@@ -860,7 +864,7 @@ const CONTEUDO = {
     destaque: { numero: "10%", legenda: "da carga horária da graduação dedicada à extensão" }
   },
 
-  /* Como o ManaMano funciona. Informações dos catálogos da 8ª e da 9ª turma. */
+  /* Como o ManaMano funciona. Informações dos catálogos da 8ª, da 9ª e da 10ª turma. */
   comoFunciona: {
     titulo: "Como o ManaMano funciona",
     lead: "O ManaMano é uma rede. Organizações da sociedade civil, docentes e estudantes da UFRJ trabalham juntos ao lado das empreendedoras durante um ano de formação.",
@@ -870,8 +874,21 @@ const CONTEUDO = {
       { titulo: "Docentes da UFRJ", texto: "Coordenam as frentes de formação, comunicação, design, tecnologia e as rodas de conversa.", icone: "assets/ic_az_aprend.png", cor: "az" },
       { titulo: "Estudantes extensionistas", texto: "Dão aulas e monitorias, cuidam da comunicação, criam logomarcas e o catálogo e desenvolvem o aplicativo ManaMano.", icone: "assets/ic_vm_ideia.png", cor: "vm" }
     ],
-    turmaFrentes: "2025",
-    frentes: [
+    /* Equipes por ano, como nos catálogos de cada turma. A primeira aparece selecionada. */
+    equipes: [
+      { ano: "2026", turma: "10ª turma", frentes: [
+        { titulo: "Formação em gestão", texto: "Aulas e monitorias em marketing digital, custos, precificação e plano de negócios.",
+          coordenacao: "Profs. Carla Velloso, Cristina Pimenta, Fernanda Kreuzberg, Jonathas Queiroz, Maribel Suarez, Marisol Goia, Ronan R. Marçal, Thauan Felipe M. de Carvalho e Thaysa Nascimento",
+          extensionistas: ["Ana Carolina Soares Ramos","Bernardo Saade Teles","Breno Vidal Vasconcellos","Bruna Santos Fonseca","Fernanda Nunes Castelo","Frederico Leblanc","Gabriela Sacramento Infante de Matos","Gabrielle Mendes Rocha","Giovana Cardoso Henrique Santiago","Giovanna Rosendo de Azevedo","Grazieli Oliveira Sales","Hillary Isabelly R. M. dos Santos","Jéssica Camilo Macena","João Luiz Vieira Andrade","Júlia Alves Fialdini","Júlia Pinheiro Moreira","Júlia Victória C. Pinheiro","Laila da Costa Santos","Letícia de Lima Fernandes","Lucas Eloy Canário","Lucas Lima de Mello","Lui Teixeira de Oliveira","Luiza de Oliveira Alves","Marcela Manggini","Maria Isabel Leite Guimarães","Maria Nicole Bourguignon Rosario","Matias Diez Queiroz","Pedro Raggio Mota Tavares","Priscila Paula de Oliveira","Rafaella de Souza Martins","Roberta Alves Ferreira","Sofia Oliveira Barcellos","Theo Varallo Calazans","Tiago Araújo Toffano Costa","Viviane P. F. Teixeira de Oliveira","Wendel Bezerra da Silva"] },
+        { titulo: "Comunicação e redes sociais", texto: "Planejamento, criação, conteúdo, postagem e interação nas redes do ManaMano.",
+          coordenacao: "Profa. Ana Paula Celso de Miranda. Estagiária: Isabella Ramos",
+          extensionistas: ["Ana Clara Correia","Anny Louise do N. S. Mariano","Arthur Salomão Dantas","Camilla Sobreira de Souza","Conrado Barroso Ribeiro","Eduarda Almeida Barreira","Enzo Bandeira Grizzi","Giovanna Petito do Rio Verde","Giuliana Pacheco de Mendonça Miceli","Isabela Marques Chêrfen de Deus","Isabella Dutra Brandini","Jenifer Abreu de Magalhães","Karen da Silva Conceição","Larissa Soares Braga","Letícia Chaves de Andrade","Luiz Gabriel Freire de Souza","Luiza Ayres","Manuelly Rodrigues de Almeida","Maria Clara Zaccur Machado Brandão","Maria Fernanda Gravina Ventorim","Mariana Gonçalves Rodrigues Santiago","Mariana Halas Musco","Sofia Couto de Paula","Uemerson Araújo Costa Rodrigues","Violeta Suarez Cabral"] },
+        { titulo: "Rodas de conversa", texto: "Suporte terapêutico e escuta empática para as empreendedoras ao longo da formação.",
+          coordenacao: "Jocelene Ignacio", // no catálogo de 2026 aparece "Ignácio"; no de 2025, "Ignacio"
+          convidados: "Ana Lucia (Asplande/Visão do Bem), Elisa Priori (COPPEAD/UFRJ), Helena Francisco (Criola/Fenix Consultoria) e Rodrigo Bernardo (Barkus)",
+          extensionistas: [] }
+      ] },
+      { ano: "2025", turma: "9ª turma", frentes: [
       { titulo: "Formação em gestão", texto: "Aulas e monitorias em marketing digital, custos e precificação e plano de negócios.",
         coordenacao: "Profas. Alini Silva, Carla Velloso, Cristina Pimenta, Maribel Suarez, Marisol Goia e Thaysa Nascimento",
         extensionistas: ["Ana Carolina Ribeiro Dias","Ana Luísa de Oliveira R Moraes","Beatriz Lopes Rodrigues Chagas","Beatryz Soares do N Barroso","Bernardo Bernardes G de Souza","Carlos Roberto Gamarra","Christinne Sério da Costa","Denis Santos Duarte","Diogo Martin Santana","Esther Naara Avelino Rocha","Felipe Moreira Carvalho","Gabriel Brito de Sousa","Gabriel Teixeira Vilaça Lobo","Gilvani Batista da Silva","Hellem Vitória dos Santos","Isabela Cardoso Calamari","Isabelle Luiza Santos de Gois","Larissa Patricia Duarte de Lima","Ligia Carla da Silva Gouveia","Maria Antônia de P V Machado","Maria Eduarda Queiroz da Silva","Maria Fernanda Curvelo Miguel","Mariana Seso","Mariana da Silva Soutto","Millena de Araujo Monteiro","Naiara Azevedo","Naiara Santos Coutinho","Nicole Albuquerque","Rafaela T. R. de Freitas","Rebeca de Lima Estevam","Sofia Martins Beiro Blanco","Stella Luyza Neves Takayas","Teresa Cristina Mergener","Thainá Mitrof","Taíssa Santos Silva","Thalia Carneiro Evangelista","Zhang Xinyi"] },
@@ -887,6 +904,7 @@ const CONTEUDO = {
       { titulo: "Ciência da Computação", texto: "Desenvolvimento do aplicativo ManaMano.",
         coordenacao: "Profa. Maria Luiza Campos",
         extensionistas: ["Guilherme de Luna","Guilherme Sobreira","Jhonata Monteiro","Nicolas Bastos","Pedro Mateus","Rayane Domingos","Tales Moreira","Thiago Barcellos"] }
+      ] }
     ]
   },
 
@@ -914,9 +932,9 @@ const CONTEUDO = {
     { id: "r-leticia", publicado: true, voz: "professora",
       texto: "Tive a oportunidade de mediar rodas de conversa com essas mulheres potentes, que ensinam umas às outras e me ensinaram muito. Eu participo de vários grupos, mas o ManaMano é de fato uma rede, onde aprendemos umas com as outras e ouvimos nossas dores, alegrias, sucessos e frustrações.",
       nome: "Leticia Casotti", papel: "Professora do COPPEAD/UFRJ" },
-    { id: "r-neide", publicado: true, voz: "parceira", // confirmar: "Neide" ou "Neige Mota", como aparece no catálogo de 2024
+    { id: "r-neige", publicado: true, voz: "parceira", // "Neige Mota (Dara)" nos catálogos de 2024 e 2026; o vídeo transcrito dizia "Neide"
       texto: "Depois que passam pelo ManaMano, as mulheres afloram, nos negócios e nas redes sociais. Elas sabem gerar renda e sabem trabalhar, mas não tinham acesso a algumas informações que vão aprendendo no ManaMano.",
-      nome: "Neide", papel: "Geração de renda, Instituto Dara" },
+      nome: "Neige Mota", papel: "Geração de renda, Instituto Dara" },
     { id: "r-ana", publicado: true, voz: "extensionista",
       texto: "A oportunidade de aparecer e de mostrar o trabalho que elas fazem é um diferencial muito grande. Ninguém faz nada sozinho. Assim como existe troca entre as empreendedoras, a equipe de comunicação também vive essa troca.",
       nome: "Ana", papel: "Extensionista, líder de redes sociais" },
@@ -938,7 +956,7 @@ const CONTEUDO = {
 
   parceiros: {
     ativo: true,
-    grupos: [ // como nos catálogos da 9ª turma
+    grupos: [ // como nos catálogos da 9ª e da 10ª turma
       { titulo: "Realização", itens: [ { nome: "UFRJ", logo: "assets/logos/ufrj.png" }, { nome: "Asplande", logo: "assets/logos/asplande.png" } ] },
       { titulo: "Parcerias", itens: [ { nome: "Instituto Dara", logo: "assets/logos/dara.png" }, { nome: "Gastromotiva", logo: "assets/logos/gastromotiva.png" }, { nome: "Rede Asta", logo: "assets/logos/asta.png" }, { nome: "Criola", logo: "assets/logos/criola.png" } ] },
       { titulo: "Patrocínio", itens: [ { nome: "Instituto PHI", logo: "assets/logos/phi.png" } ] }
@@ -946,14 +964,53 @@ const CONTEUDO = {
   },
 
   catalogos: [
+    { turma: "2026", rotulo: "Catálogo da 10ª turma (2026)", arquivo: "assets/catalogos/catalogo-manamano-2026.pdf" },
     { turma: "2025", rotulo: "Catálogo da 9ª turma (2025)", arquivo: "assets/catalogos/catalogo-manamano-2025.pdf" },
     { turma: "2024", rotulo: "Catálogo da 8ª turma (2024)", arquivo: "assets/catalogos/catalogo-manamano-2024.pdf" }
   ],
 
   empreendedorasIntro: "Conheça algumas das mulheres que fazem parte da rede ManaMano.",
-  /* Turmas de 2025 e 2024. Nomes, marcas, áreas e perfis dos catálogos de cada turma.
-     Fotos recortadas dos catálogos. Áreas iguais às do catálogo: Artesanato, Gastronomia, Beleza. */
+  /* Turmas de 2026, 2025 e 2024. Nomes, marcas, áreas e perfis dos catálogos de cada turma.
+     Fotos recortadas dos catálogos. Áreas iguais às do catálogo: Artesanato, Gastronomia, Beleza.
+     2026: o catálogo agrupa a Trançadas.com em "Artesanias"; aqui ela entra em Beleza (tranças). */
   empreendedoras: [
+    { id: "e26-anny", publicado: true, turma: "2026", nomeNegocio: "Trançadas.com", empreendedora: "Anny Fernanda", areaAtuacao: "Beleza",
+      descricao: "Tranças personalizadas, como Ghana Braids, Bantu Knots e Boho Braids, pensadas para o estilo e o cabelo de cada cliente. Também atende a domicílio.",
+      redeSocial: { rotulo: "@trancadas.comm", url: "https://www.instagram.com/trancadas.comm/" }, foto: { src: "assets/fotos/anny.jpg", alt: "Anny Fernanda sorrindo, com tranças, segurando um pente e uma tesoura" } },
+    { id: "e26-rita", publicado: true, turma: "2026", nomeNegocio: "Arte e Pontinhos da Ritinha", empreendedora: "Rita de Cássia Pulice Vieira", areaAtuacao: "Artesanato",
+      descricao: "Peças em feltro ecológico, feito de garrafas PET recicladas, como brinquedos pedagógicos, livros sensoriais e decoração para festas e maternidade. Artesã de Duque de Caxias.",
+      redeSocial: { rotulo: "@ritinha.arteepontinhos", url: "https://www.instagram.com/ritinha.arteepontinhos/" }, foto: { src: "assets/fotos/rita.jpg", alt: "Rita de Cássia Pulice Vieira sorrindo ao lado de um livro sensorial de feltro" } },
+    { id: "e26-adriana", publicado: true, turma: "2026", nomeNegocio: "Sabores da Pretta Raiz", empreendedora: "Adriana Gizele Silva do Carmo", areaAtuacao: "Gastronomia",
+      descricao: "Empadões, salgadinhos fritos na hora e bombons trufados para aniversários e comemorações, com atendimento na Zona Norte do Rio.",
+      redeSocial: { rotulo: "@sabores_da_pretta_raiz", url: "https://www.instagram.com/sabores_da_pretta_raiz/" }, foto: { src: "assets/fotos/adriana.jpg", alt: "Adriana Gizele Silva do Carmo sorrindo, de camiseta branca" } },
+    { id: "e26-alcinea", publicado: true, turma: "2026", nomeNegocio: "Ranhol Confeitaria", empreendedora: "Alcinea Ranhol Gomes", areaAtuacao: "Gastronomia",
+      descricao: "Bolos, doces e sobremesas artesanais por encomenda ou pronta entrega. Formada em Gastronomia com bolsa integral do ProUni, formalizou o negócio em 2015.",
+      redeSocial: { rotulo: "@ranholconfeitaria", url: "https://www.instagram.com/ranholconfeitaria/" }, foto: { src: "assets/fotos/alcinea.jpg", alt: "Alcinea Ranhol Gomes decorando um bolo" } },
+    { id: "e26-ale", publicado: true, turma: "2026", nomeNegocio: "Top Fit Saudáveis", empreendedora: "Alexsandra Souza", areaAtuacao: "Gastronomia",
+      descricao: "Refeições saudáveis do café da manhã ao jantar, com ingredientes frescos e orgânicos, como escondidinhos, tortas salgadas e sopas. Em 2025, integrou o programa Ingrediente Principal, no TikTok.",
+      redeSocial: { rotulo: "@top_fit_saudaveis", url: "https://www.instagram.com/top_fit_saudaveis/" }, foto: { src: "assets/fotos/ale.jpg", alt: "Alexsandra Souza sorrindo com um maço de cenouras" } },
+    { id: "e26-amanda", publicado: true, turma: "2026", nomeNegocio: "Delícias da AB", empreendedora: "Amanda Borges", areaAtuacao: "Gastronomia",
+      descricao: "Sacolés gourmet com pedaços de fruta de verdade, mini pizzas e bolos personalizados por encomenda em São João de Meriti.",
+      redeSocial: { rotulo: "@delicias_da_ab", url: "https://www.instagram.com/delicias_da_ab/" }, foto: { src: "assets/fotos/amanda.jpg", alt: "Amanda Borges de dólmã, segurando um bolo decorado" } },
+    { id: "e26-barbara", publicado: true, turma: "2026", nomeNegocio: "Babi Cake Confeitaria", empreendedora: "Bárbara Soares", areaAtuacao: "Gastronomia",
+      descricao: "Bolos decorados, brownies e kits de festa. Especializada em cake design, conquistou o primeiro lugar em um concurso de bolos artísticos na Expo Cakes Brasil.",
+      redeSocial: { rotulo: "@babicakedesign", url: "https://www.instagram.com/babicakedesign/" }, foto: { src: "assets/fotos/barbara.jpg", alt: "Bárbara Soares sorrindo, segurando um bolo" } },
+    { id: "e26-damiana", publicado: true, turma: "2026", nomeNegocio: "Tempero da Dami", empreendedora: "Damiana B. da Conceição", areaAtuacao: "Gastronomia",
+      descricao: "Empadões, inclusive sem glúten, kibe de forno e pães recheados, feitos com ingredientes frescos da feira e sem temperos industrializados.",
+      redeSocial: { rotulo: "@Tempero_da_dami", url: "https://www.instagram.com/tempero_da_dami/" }, foto: { src: "assets/fotos/damiana.jpg", alt: "Damiana B. da Conceição de dólmã, de braços cruzados" } },
+    { id: "e26-elaine", publicado: true, turma: "2026", nomeNegocio: "Elaine Feliciano Gastronomia", empreendedora: "Elaine Feliciano", areaAtuacao: "Gastronomia",
+      descricao: "Confeitaria artesanal, brownies autorais, serviço de personal chef e encomendas para eventos. Aprimorou sua formação na Le Cordon Bleu.",
+      redeSocial: { rotulo: "@elainefelic_cp", url: "https://www.instagram.com/elainefelic_cp/" }, foto: { src: "assets/fotos/elaine.jpg", alt: "Elaine Feliciano com um turbante estampado" } },
+    { id: "e26-graziele", publicado: true, turma: "2026", nomeNegocio: "Confeitaria da Grazie", empreendedora: "Graziele Arêas", areaAtuacao: "Gastronomia",
+      descricao: "Bolos caseiros, kits de festa e doces personalizados por encomenda. Chef formada em Gastronomia, foi instrutora no curso a distância da Gastromotiva.",
+      redeSocial: { rotulo: "@confeitariadagrazie", url: "https://www.instagram.com/confeitariadagrazie/" }, foto: { src: "assets/fotos/graziele.jpg", alt: "Graziele Arêas de dólmã verde, de braços cruzados" } },
+    { id: "e26-alice", publicado: true, turma: "2026", nomeNegocio: "Gostoso Zero Açúcar", empreendedora: "Alice Santos", areaAtuacao: "Gastronomia",
+      descricao: "Bolos, biscoitos e sacolés com receitas adaptadas a cada necessidade alimentar, com opções sem açúcar e low carb, além de serviço para eventos.",
+      redeSocial: { rotulo: "@gostosozeroacucar", url: "https://www.instagram.com/gostosozeroacucar/" }, foto: { src: "assets/fotos/alice.jpg", alt: "Alice Santos decorando um bolo de chocolate" } },
+    { id: "e26-pamela", publicado: true, turma: "2026", nomeNegocio: "Amaral Gastronomia", empreendedora: "Pâmela Amaral", areaAtuacao: "Gastronomia",
+      descricao: "Buffet de crepe francês, estação de crepe suíço, mesa de frios e coffee-break para eventos, além de crepes em feiras livres.",
+      redeSocial: { rotulo: "@amaralgastronomiaa", url: "https://www.instagram.com/amaralgastronomiaa/" }, foto: { src: "assets/fotos/pamela.jpg", alt: "Pâmela Amaral preparando um crepe" } },
+
     { id: "e25-cristiane", publicado: true, turma: "2025", nomeNegocio: "Crislartesã", empreendedora: "Cristiane dos Santos", areaAtuacao: "Artesanato",
       descricao: "Acessórios artesanais e sustentáveis, como tiaras de macramê, laços, brincos e chaveiros, criados para fortalecer a autoestima de mulheres e meninas negras.",
       redeSocial: { rotulo: "@cris_by_lacos", url: "https://www.instagram.com/cris_by_lacos/" }, foto: { src: "assets/fotos/cristiane.jpg", alt: "Cristiane dos Santos sorrindo" } },
@@ -1051,7 +1108,7 @@ const CONTEUDO = {
   ],
 
   professores: [
-    { id: "p-maribel", publicado: true, nome: "Maribel Suarez", areaAtuacao: "Faculdade de Administração e Ciências Contábeis, UFRJ", disciplina: "Coordenação do ManaMano",
+    { id: "p-maribel", publicado: true, nome: "Maribel Suarez", areaAtuacao: "Instituto COPPEAD de Administração, UFRJ", disciplina: "Coordenação do ManaMano",
       miniBio: "Uma das professoras coordenadoras do projeto. Acompanha a evolução do ManaMano e da metodologia de trabalho em rede, construída a partir da experiência das empreendedoras.", foto: null },
     { id: "p-marisol", publicado: true, nome: "Marisol Goia", areaAtuacao: "Faculdade de Administração e Ciências Contábeis, UFRJ", disciplina: "Posicionamento",
       miniBio: "Participa do ManaMano desde a segunda turma. Ministra a aula de posicionamento e coordena a formação em gestão.", foto: null },
@@ -1186,11 +1243,19 @@ const CONTEUDO = {
   const cf = C.comoFunciona;
   if (cf) {
     $("#rede").innerHTML = cf.nos.map(n => `<li class="no ${n.cor}"><img class="icone" src="${(window.ASSETS || {})[n.icone] || esc(n.icone)}" alt=""><h3>${esc(n.titulo)}</h3><p>${esc(n.texto)}</p></li>`).join("");
-    $("#frentes-titulo").textContent = `Frentes de trabalho da turma de ${cf.turmaFrentes}`;
-    $("#frentes").innerHTML = cf.frentes.map(f => {
-      const nomes = [...f.extensionistas].sort((x, y) => x.localeCompare(y, "pt-BR")); const n = nomes.length;
-      return `<article class="frente"><h4>${esc(f.titulo)}</h4><p>${esc(f.texto)}</p><p class="coord"><span>Coordenação</span>${esc(f.coordenacao)}</p>${n ? `<details><summary><span class="n">${n}</span> ${n === 1 ? "extensionista" : "extensionistas"}</summary><ul>${nomes.map(x => `<li>${esc(x)}</li>`).join("")}</ul></details>` : ""}</article>`;
-    }).join("");
+    const equipes = cf.equipes || [];
+    const mostrarEquipe = ano => {
+      const eq = equipes.find(e => e.ano === ano) || equipes[0];
+      $("#frentes").innerHTML = eq.frentes.map(f => {
+        const nomes = [...f.extensionistas].sort((x, y) => x.localeCompare(y, "pt-BR")); const n = nomes.length;
+        return `<article class="frente"><h4>${esc(f.titulo)}</h4><p>${esc(f.texto)}</p><p class="coord"><span>Coordenação</span>${esc(f.coordenacao)}</p>${f.convidados ? `<p class="coord"><span>Palestrantes convidados</span>${esc(f.convidados)}</p>` : ""}${n ? `<details><summary><span class="n">${n}</span> ${n === 1 ? "extensionista" : "extensionistas"}</summary><ul>${nomes.map(x => `<li>${esc(x)}</li>`).join("")}</ul></details>` : ""}</article>`;
+      }).join("");
+      $("#anos-equipe").querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.ano === eq.ano)));
+    };
+    $("#frentes-titulo").textContent = "Frentes de trabalho";
+    $("#anos-equipe").innerHTML = equipes.length > 1 ? equipes.map(e => `<button type="button" class="btn btn-secundario" data-ano="${esc(e.ano)}" aria-pressed="false">${esc(e.ano)} <span>${esc(e.turma)}</span></button>`).join("") : "";
+    $("#anos-equipe").addEventListener("click", ev => { const b = ev.target.closest("button[data-ano]"); if (b) mostrarEquipe(b.dataset.ano); });
+    if (equipes.length) mostrarEquipe(equipes[0].ano);
   }
 
   /* empreendedoras */
@@ -1229,7 +1294,7 @@ const CONTEUDO = {
       el.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === bt)); aoEscolher(bt.dataset.v); mostrar = POR_PAGINA; desenhaEmp(); trilho.scrollLeft = 0; });
   };
   chips("#grupo-turma", $("#filtro-turma"), [...new Set(emps.map(e => e.turma).filter(Boolean))].sort().reverse(), "Todas", v => filtroTurma = v);
-  chips("#grupo-area", $("#filtros"), [...new Set(emps.map(e => e.areaAtuacao).filter(Boolean))], "Todas", v => filtroArea = v);
+  chips("#grupo-area", $("#filtros"), [...new Set(emps.map(e => e.areaAtuacao).filter(Boolean))].sort((a, b) => { const o = ["Artesanato", "Gastronomia", "Beleza"], ia = o.indexOf(a), ib = o.indexOf(b); return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib); }), "Todas", v => filtroArea = v);
   verMais.addEventListener("click", () => { mostrar += POR_PAGINA; desenhaEmp(); });
   desenhaEmp();
   if (emps.length > 1) $("#dica-emp").classList.add("ativa");
