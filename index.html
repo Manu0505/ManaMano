@@ -280,6 +280,17 @@ p{margin:0}
 .prof .disc{color:var(--vermelho); font-weight:700; font-size:.95rem}
 .prof .bio{font-size:.98rem; line-height:1.55}
 .prof .selo{top:.7rem; right:.7rem}
+.prof-rede{display:grid; grid-template-columns:minmax(0,2fr) minmax(0,1fr); gap:clamp(2rem,5vw,4rem); margin-top:clamp(3.5rem,7vw,5.5rem); padding-top:clamp(2rem,4vw,3rem); border-top:2px solid rgb(16 27 71 / .16)}
+.rede-bloco h3{font-size:clamp(1.45rem,2.4vw,1.9rem); margin:0 0 .5rem}
+.rede-intro{font-size:.95rem; max-width:46ch; margin:0 0 1.5rem; opacity:.85}
+.rede-cols{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.5rem 2rem}
+.rede-cols h4{font-size:.75rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--vermelho); margin:0 0 .8rem}
+.nomes{list-style:none; margin:0; padding:0; display:grid; gap:.65rem}
+.nomes li{display:grid; gap:.05rem; line-height:1.3}
+.nomes strong{font-weight:700; font-size:.98rem}
+.nomes span{font-size:.85rem; opacity:.8}
+@media (max-width:860px){ .prof-rede{grid-template-columns:1fr} }
+@media (max-width:440px){ .rede-cols{grid-template-columns:1fr} }
 @media (max-width:600px){ .grade-prof{grid-template-columns:repeat(2, minmax(0,1fr))} }
 @media (max-width:440px){ .grade-prof{gap:1.5rem 1rem} .prof h3{font-size:1.3rem} .prof .bio,.prof .area,.prof .disc{font-size:.9rem} }
 
@@ -742,6 +753,18 @@ html.parado *, html.parado *::before, html.parado *::after{animation-play-state:
     <div class="wrap">
       <div class="titulo-secao"><h2 id="t-prof">Nossos Professores</h2></div>
       <div class="grade-prof" id="grade-prof"></div>
+      <div class="prof-rede">
+        <div class="rede-bloco">
+          <h3>Concepção do projeto</h3>
+          <p class="rede-intro">Docentes da UFRJ e representantes das organizações parceiras que desenharam o ManaMano, como registram os catálogos das turmas.</p>
+          <div class="rede-cols" id="concepcao"></div>
+        </div>
+        <div class="rede-bloco">
+          <h3>Também coordenaram frentes</h3>
+          <p class="rede-intro">Pessoas que coordenaram frentes de trabalho entre 2024 e 2026, segundo os catálogos.</p>
+          <ul class="nomes" id="coordenacoes"></ul>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -802,6 +825,7 @@ html.parado *, html.parado *::before, html.parado *::after{animation-play-state:
     <div class="creditos">
       <span>© 2026 Fundo ManaMano · Projeto de extensão da UFRJ</span>
       <span>Identidade visual: LUPA</span>
+      <span>Site: equipe de Comunicação e Redes Sociais 2026 · Coordenação: Profa. Ana Paula Celso de Miranda · Estrutura e textos: Isabella Ramos · Desenvolvimento: Manuelly Almeida</span>
     </div>
     <nav aria-label="Rodapé"><ul id="rodape-links"></ul></nav>
   </div>
@@ -1107,13 +1131,62 @@ const CONTEUDO = {
       redeSocial: { rotulo: "@patynil_bolosedoces", url: "https://www.instagram.com/patynil_bolosedoces/" }, foto: { src: "assets/fotos/patricia.jpg", alt: "Patrícia dos Santos Fontes sorrindo" } }
   ],
 
+  /* Textos enviados pelos próprios professores (pasta "Site profs", nov/2026). Marisol: texto anterior, a confirmar.
+     foto: { src: "assets/professores/<id>.jpg", alt: "..." } quando as fotos chegarem; sem foto, o card mostra as iniciais. */
   professores: [
-    { id: "p-maribel", publicado: true, nome: "Maribel Suarez", areaAtuacao: "Instituto COPPEAD de Administração, UFRJ", disciplina: "Coordenação do ManaMano",
-      miniBio: "Uma das professoras coordenadoras do projeto. Acompanha a evolução do ManaMano e da metodologia de trabalho em rede, construída a partir da experiência das empreendedoras.", foto: null },
+    { id: "p-ana-paula", publicado: true, nome: "Ana Paula Celso de Miranda", areaAtuacao: "Faculdade de Administração e Ciências Contábeis, UFRJ", disciplina: "Fundadora · Coordena a comunicação",
+      miniBio: "Dra. Ana Paula de Miranda é fundadora do ManaMano e coordena a equipe de extensionistas da agência de comunicação do projeto. É professora titular e ministra a disciplina de Comportamento do Consumidor no curso de administração da FACC. É a passeadora de Muttley, o pitbull mais fofo do mundo.",
+      foto: null },
+    { id: "p-maribel", publicado: true, nome: "Maribel Suarez", areaAtuacao: "Instituto COPPEAD de Administração, UFRJ", disciplina: "Coordenação do projeto",
+      miniBio: "Maribel Suarez integra a equipe de coordenação do projeto, participando do ManaMano desde a sua concepção. É doutora em Administração, com formação em terapia corporal e ioga. Na UFRJ, ministra as disciplinas de Metodologia da Pesquisa, Comunicação e Conversas Difíceis, Competências Socioemocionais para a Inovação e o Empreendedorismo.",
+      foto: null },
+    { id: "p-ariane", publicado: true, nome: "Ariane Roder Figueira", areaAtuacao: "Instituto COPPEAD de Administração, UFRJ", disciplina: "Fundadora",
+      miniBio: "Ariane Roder Figueira é uma das idealizadoras e fundadoras do ManaMano. Desde o começo, ajudou a transformar a ideia em realidade, participando da criação da marca, da construção da rede de parceiros e da implantação do projeto como uma iniciativa de extensão da UFRJ. É vice-diretora de Relações Internacionais do COPPEAD/UFRJ e professora de Política e Negócios Internacionais nos cursos de mestrado e doutorado em Administração. Seu papel favorito é ser mãe da Rafa e do Felipe, que dão um sentido muito especial a tudo isso.",
+      foto: null },
+    { id: "p-rita", publicado: true, nome: "Rita Afonso", areaAtuacao: "Faculdade de Administração e Ciências Contábeis, UFRJ", disciplina: "Fundadora",
+      miniBio: "Dra. Rita Afonso é fundadora do ManaMano e foi coordenadora da comunicação e professora de marketing do projeto. É Diretora Adjunta (2025-2029) da Faculdade de Administração e Ciências Contábeis da UFRJ e professora associada na área de marketing e negócios de impacto do curso de administração. É avó da Dora e da Lia, seus melhores projetos :)",
+      foto: null },
+    { id: "p-marcelo", publicado: true, nome: "Marcelo Castañeda", areaAtuacao: "Faculdade de Administração e Ciências Contábeis, UFRJ", disciplina: "Fundador · Coordenação de 2020 a 2022",
+      miniBio: "Dr. Marcelo Castañeda é fundador do ManaMano e participou da coordenação do projeto entre 2020 e 2022. É professor adjunto e ministra disciplinas como Teoria das Organizações e Abordagens Críticas em Administração no curso de Administração da FACC.",
+      foto: null },
+    { id: "p-leticia", publicado: true, nome: "Leticia Casotti", areaAtuacao: "Instituto COPPEAD de Administração, UFRJ", disciplina: "Palestras e rodas de conversa",
+      miniBio: "Leticia Casotti é colaboradora e entusiasta do ManaMano desde o seu início, quando atuou como palestrante e mediadora da roda de conversas. Recentemente aposentada do COPPEAD/UFRJ, onde esteve por 35 anos na área de Marketing e Negócios Internacionais e fundou o CECS (Centro de Estudos em Consumo e Sociedade). Mãe de três homens super “do bem” e avó de Betina e Tomaz.",
+      foto: null },
     { id: "p-marisol", publicado: true, nome: "Marisol Goia", areaAtuacao: "Faculdade de Administração e Ciências Contábeis, UFRJ", disciplina: "Posicionamento",
-      miniBio: "Participa do ManaMano desde a segunda turma. Ministra a aula de posicionamento e coordena a formação em gestão.", foto: null },
-    { id: "p-leticia", publicado: true, nome: "Leticia Casotti", areaAtuacao: "Instituto COPPEAD de Administração, UFRJ", disciplina: "Rodas de conversa",
-      miniBio: "Participa do ManaMano há alguns anos, primeiro como palestrante e professora. Hoje coordena as rodas de conversa com as empreendedoras.", foto: null }
+      miniBio: "Participa do ManaMano desde a segunda turma. Ministra a aula de posicionamento e coordena a formação em gestão.",
+      foto: null },
+    { id: "p-carla", publicado: true, nome: "Carla Velloso", areaAtuacao: "Faculdade de Administração e Ciências Contábeis, UFRJ", disciplina: "Custos e precificação, desde 2023",
+      miniBio: "Carla Velloso integra a equipe de professores de Custos e Precificação do ManaMano desde 2023. É professora do curso de graduação em Ciências Contábeis da UFRJ, onde leciona Contabilidade de Custos II, e do Programa de Pós-Graduação em Ciências Contábeis (PPGCC/UFRJ), na disciplina de Metodologia da Pesquisa Contábil. Acredita no poder da educação e do conhecimento como instrumentos de transformação e fortalecimento dos pequenos negócios. É mãe da Mel e do Samuel.",
+      foto: null },
+    { id: "p-thaysa", publicado: true, nome: "Thaysa Nascimento", areaAtuacao: "Instituto COPPEAD de Administração, UFRJ", disciplina: "Marketing, desde 2025",
+      miniBio: "Thaysa Nascimento integra a equipe de professores de marketing da rede ManaMano desde 2025. É professora de comportamento do consumidor e marketing digital do COPPEAD/UFRJ.",
+      foto: null },
+    { id: "p-jonathas", publicado: true, nome: "Jonathas Queiroz", areaAtuacao: "Faculdade de Administração e Ciências Contábeis, UFRJ", disciplina: "Gestão de custos, desde 2026",
+      miniBio: "Jonathas Queiroz integra o ManaMano desde o segundo semestre de 2026, atuando na área de gestão de custos e auxiliando as empreendedoras no planejamento de seus negócios. É doutor em Ciências Contábeis e professor da FACC/UFRJ, onde leciona Gestão e Planejamento Tributário e Simulação Empresarial. Na contabilidade da vida, sua melhor escolha foi Aracele, sua esposa, e seus projetos mais preciosos são Rebeca e Giovana, suas filhas.",
+      foto: null },
+    { id: "p-thauan", publicado: true, nome: "Thauan Carvalho", areaAtuacao: "Faculdade de Administração e Ciências Contábeis, UFRJ", disciplina: "Custos, desde 2026",
+      miniBio: "Thauan Carvalho integra a equipe de professores de custo da rede ManaMano desde meados de 2026. É professor de Contabilidade da FACC/UFRJ.",
+      foto: null }
+  ],
+
+  /* Concepção do projeto, como nos catálogos de 2024, 2025 e 2026 */
+  concepcao: {
+    ufrj: [["Ana Paula Celso de Miranda","FACC"],["Ariane Roder","COPPEAD"],["Cristina Pimenta","FACC"],["Fernanda Canavêz","Instituto de Psicologia"],["Leticia Casotti","COPPEAD"],["Liliane Furtado","COPPEAD"],["Marcelo Castañeda","FACC"],["Maria Luiza Campos","Ciência da Computação"],["Maribel Suarez","COPPEAD"],["Marie Macadar","COPPEAD"],["Marisol Goia","FACC"],["Paulo Reis","Inovação"],["Renata Santos","Pós-doutorado, COPPEAD"],["Rita Afonso","FACC"]],
+    organizacoes: [["Alice Freitas","Rede Asta"],["Cindy Lessa","Ashoka"],["Cristina Pereira","Instituto Dara"],["Dayse Valença","Asplande"],["Luiza Serpa","Instituto PHI"],["Marcos Mello","Luta pela Paz"],["Mirella Domenich","Instituto Dara"],["Monica Sacramento","Criola"],["Pedro Barros","Instituto Dara"],["Rafael Murta","Ashoka"],["Winnee Louise","Gastromotiva"]]
+  },
+
+  /* Quem coordenou frentes nos catálogos de 2024 a 2026 e não tem card acima */
+  coordenacoes: [
+    ["Alini Silva","Formação em gestão","2024 e 2025"],
+    ["Cristina Pimenta","Formação em gestão","2024 a 2026"],
+    ["Deborah Christo","Design","2024 e 2025"],
+    ["Fernanda Canavêz","Psicologia","2024"],
+    ["Fernanda Kreuzberg","Formação em gestão","2026"],
+    ["Jocelene Ignacio","Rodas de conversa","2026"],
+    ["Maria Luiza Campos","Ciência da computação","2024 e 2025"],
+    ["Norma Junqueira","Rodas de conversa","2025"],
+    ["Ronan R. Marçal","Formação em gestão","2026"],
+    ["Sandra Monica Schwarzstein","Rodas de conversa","2025"]
   ],
 
   /* Galeria de eventos: só aparece quando houver fotos.
@@ -1319,12 +1392,15 @@ const CONTEUDO = {
       <div class="prof-foto"><span class="forma f-arco" style="--c:${i % 2 ? "var(--vermelho)" : "var(--azul-medio)"}" aria-hidden="true"></span>
         ${p.foto ? `<img src="${esc(p.foto.src)}" alt="${esc(p.foto.alt)}" loading="lazy">` : (p.nome ? `<span class="iniciais" aria-hidden="true">${esc(iniciais(p.nome))}</span>` : "")}</div>
       <h3>${ph(p.nome, "Nome do Professor(a)")}</h3>
-      <p class="area">${ph(p.areaAtuacao, "Área de atuação")}</p>
-      <p class="disc">${ph(p.disciplina, "Disciplina ministrada")}</p>
-      <p class="bio">${ph(p.miniBio, "Mini biografia")}</p>
+      ${p.disciplina || P ? `<p class="disc">${ph(p.disciplina, "Disciplina ministrada")}</p>` : ""}
+      ${p.areaAtuacao || P ? `<p class="area">${ph(p.areaAtuacao, "Área de atuação")}</p>` : ""}
+      ${p.miniBio || P ? `<p class="bio">${ph(p.miniBio, "Mini biografia")}</p>` : ""}
     </article>`;
   }).join("");
   if (!profs.length) $("#professores").classList.add("oculto");
+  const cc = C.concepcao, pessoa = ([n, u]) => `<li><strong>${esc(n)}</strong><span>${esc(u)}</span></li>`;
+  if (cc) $("#concepcao").innerHTML = `<div><h4>UFRJ</h4><ul class="nomes">${cc.ufrj.map(pessoa).join("")}</ul></div><div><h4>Organizações parceiras</h4><ul class="nomes">${cc.organizacoes.map(pessoa).join("")}</ul></div>`;
+  if (C.coordenacoes) $("#coordenacoes").innerHTML = C.coordenacoes.map(([n, f, a]) => `<li><strong>${esc(n)}</strong><span>${esc(f)}, ${esc(a)}</span></li>`).join("");
   const ct = C.contato;
   $("#lista-contatos").innerHTML = `
     <li><span class="rot">Instagram:</span><span class="val"><a href="${esc(ct.instagram.url)}" target="_blank" rel="noopener noreferrer">${esc(ct.instagram.rotulo)}</a></span></li>
