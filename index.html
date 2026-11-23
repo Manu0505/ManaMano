@@ -291,7 +291,7 @@ p{margin:0}
 .nomes span{font-size:.85rem; opacity:.8}
 @media (max-width:860px){ .prof-rede{grid-template-columns:1fr} }
 @media (max-width:440px){ .rede-cols{grid-template-columns:1fr} }
-@media (max-width:600px){ .grade-prof{grid-template-columns:repeat(2, minmax(0,1fr))} }
+@media (max-width:600px){ .grade-prof{grid-template-columns:1fr; gap:2.75rem} .prof-foto{width:min(62%, 240px)} }
 @media (max-width:440px){ .grade-prof{gap:1.5rem 1rem} .prof h3{font-size:1.3rem} .prof .bio,.prof .area,.prof .disc{font-size:.9rem} }
 
 /* ---------- envolva-se ---------- */
@@ -1136,37 +1136,37 @@ const CONTEUDO = {
   professores: [
     { id: "p-ana-paula", publicado: true, nome: "Ana Paula Celso de Miranda", areaAtuacao: "Faculdade de Administração e Ciências Contábeis, UFRJ", disciplina: "Fundadora · Coordena a comunicação",
       miniBio: "Dra. Ana Paula de Miranda é fundadora do ManaMano e coordena a equipe de extensionistas da agência de comunicação do projeto. É professora titular e ministra a disciplina de Comportamento do Consumidor no curso de administração da FACC. É a passeadora de Muttley, o pitbull mais fofo do mundo.",
-      foto: null },
+      foto: { src: "assets/professores/ana-paula.jpg", alt: "Ana Paula Celso de Miranda sorrindo, com as mãos na cintura" } },
     { id: "p-maribel", publicado: true, nome: "Maribel Suarez", areaAtuacao: "Instituto COPPEAD de Administração, UFRJ", disciplina: "Coordenação do projeto",
       miniBio: "Maribel Suarez integra a equipe de coordenação do projeto, participando do ManaMano desde a sua concepção. É doutora em Administração, com formação em terapia corporal e ioga. Na UFRJ, ministra as disciplinas de Metodologia da Pesquisa, Comunicação e Conversas Difíceis, Competências Socioemocionais para a Inovação e o Empreendedorismo.",
-      foto: null },
+      foto: { src: "assets/professores/maribel.jpg", alt: "Maribel Suarez sorrindo, diante de folhagens" } },
     { id: "p-ariane", publicado: true, nome: "Ariane Roder Figueira", areaAtuacao: "Instituto COPPEAD de Administração, UFRJ", disciplina: "Fundadora",
       miniBio: "Ariane Roder Figueira é uma das idealizadoras e fundadoras do ManaMano. Desde o começo, ajudou a transformar a ideia em realidade, participando da criação da marca, da construção da rede de parceiros e da implantação do projeto como uma iniciativa de extensão da UFRJ. É vice-diretora de Relações Internacionais do COPPEAD/UFRJ e professora de Política e Negócios Internacionais nos cursos de mestrado e doutorado em Administração. Seu papel favorito é ser mãe da Rafa e do Felipe, que dão um sentido muito especial a tudo isso.",
-      foto: null },
+      foto: { src: "assets/professores/ariane.jpg", alt: "Ariane Roder Figueira sorrindo, de blazer" } },
     { id: "p-rita", publicado: true, nome: "Rita Afonso", areaAtuacao: "Faculdade de Administração e Ciências Contábeis, UFRJ", disciplina: "Fundadora",
       miniBio: "Dra. Rita Afonso é fundadora do ManaMano e foi coordenadora da comunicação e professora de marketing do projeto. É Diretora Adjunta (2025-2029) da Faculdade de Administração e Ciências Contábeis da UFRJ e professora associada na área de marketing e negócios de impacto do curso de administração. É avó da Dora e da Lia, seus melhores projetos :)",
-      foto: null },
+      foto: { src: "assets/professores/rita.jpg", alt: "Rita Afonso sorrindo, apoiada em uma mureta" } },
     { id: "p-marcelo", publicado: true, nome: "Marcelo Castañeda", areaAtuacao: "Faculdade de Administração e Ciências Contábeis, UFRJ", disciplina: "Fundador · Coordenação de 2020 a 2022",
       miniBio: "Dr. Marcelo Castañeda é fundador do ManaMano e participou da coordenação do projeto entre 2020 e 2022. É professor adjunto e ministra disciplinas como Teoria das Organizações e Abordagens Críticas em Administração no curso de Administração da FACC.",
-      foto: null },
+      foto: { src: "assets/professores/marcelo.jpg", alt: "Marcelo Castañeda de braços cruzados, sorrindo" } },
     { id: "p-leticia", publicado: true, nome: "Leticia Casotti", areaAtuacao: "Instituto COPPEAD de Administração, UFRJ", disciplina: "Palestras e rodas de conversa",
       miniBio: "Leticia Casotti é colaboradora e entusiasta do ManaMano desde o seu início, quando atuou como palestrante e mediadora da roda de conversas. Recentemente aposentada do COPPEAD/UFRJ, onde esteve por 35 anos na área de Marketing e Negócios Internacionais e fundou o CECS (Centro de Estudos em Consumo e Sociedade). Mãe de três homens super “do bem” e avó de Betina e Tomaz.",
-      foto: null },
+      foto: { src: "assets/professores/leticia.jpg", alt: "Leticia Casotti sorrindo, de óculos, com o mar ao fundo" } },
     { id: "p-marisol", publicado: true, nome: "Marisol Goia", areaAtuacao: "Faculdade de Administração e Ciências Contábeis, UFRJ", disciplina: "Posicionamento",
       miniBio: "Participa do ManaMano desde a segunda turma. Ministra a aula de posicionamento e coordena a formação em gestão.",
-      foto: null },
+      foto: { src: "assets/professores/marisol.jpg", alt: "Marisol Goia sorrindo, com a camiseta do ManaMano" } },
     { id: "p-carla", publicado: true, nome: "Carla Velloso", areaAtuacao: "Faculdade de Administração e Ciências Contábeis, UFRJ", disciplina: "Custos e precificação, desde 2023",
       miniBio: "Carla Velloso integra a equipe de professores de Custos e Precificação do ManaMano desde 2023. É professora do curso de graduação em Ciências Contábeis da UFRJ, onde leciona Contabilidade de Custos II, e do Programa de Pós-Graduação em Ciências Contábeis (PPGCC/UFRJ), na disciplina de Metodologia da Pesquisa Contábil. Acredita no poder da educação e do conhecimento como instrumentos de transformação e fortalecimento dos pequenos negócios. É mãe da Mel e do Samuel.",
-      foto: null },
+      foto: { src: "assets/professores/carla.jpg", alt: "Carla Velloso sorrindo, de óculos, com morros ao fundo" } },
     { id: "p-thaysa", publicado: true, nome: "Thaysa Nascimento", areaAtuacao: "Instituto COPPEAD de Administração, UFRJ", disciplina: "Marketing, desde 2025",
       miniBio: "Thaysa Nascimento integra a equipe de professores de marketing da rede ManaMano desde 2025. É professora de comportamento do consumidor e marketing digital do COPPEAD/UFRJ.",
-      foto: null },
+      foto: { src: "assets/professores/thaysa.jpg", alt: "Thaysa Nascimento sorrindo, de óculos" } },
     { id: "p-jonathas", publicado: true, nome: "Jonathas Queiroz", areaAtuacao: "Faculdade de Administração e Ciências Contábeis, UFRJ", disciplina: "Gestão de custos, desde 2026",
       miniBio: "Jonathas Queiroz integra o ManaMano desde o segundo semestre de 2026, atuando na área de gestão de custos e auxiliando as empreendedoras no planejamento de seus negócios. É doutor em Ciências Contábeis e professor da FACC/UFRJ, onde leciona Gestão e Planejamento Tributário e Simulação Empresarial. Na contabilidade da vida, sua melhor escolha foi Aracele, sua esposa, e seus projetos mais preciosos são Rebeca e Giovana, suas filhas.",
-      foto: null },
+      foto: { src: "assets/professores/jonathas.jpg", alt: "Jonathas Queiroz de terno, diante de uma estante de livros" } },
     { id: "p-thauan", publicado: true, nome: "Thauan Carvalho", areaAtuacao: "Faculdade de Administração e Ciências Contábeis, UFRJ", disciplina: "Custos, desde 2026",
       miniBio: "Thauan Carvalho integra a equipe de professores de custo da rede ManaMano desde meados de 2026. É professor de Contabilidade da FACC/UFRJ.",
-      foto: null }
+      foto: { src: "assets/professores/thauan.jpg", alt: "Thauan Carvalho de camisa social, em fundo branco" } }
   ],
 
   /* Concepção do projeto, como nos catálogos de 2024, 2025 e 2026 */
